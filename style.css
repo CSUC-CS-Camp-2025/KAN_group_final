@@ -1,0 +1,29 @@
+body {
+    display:flex;
+    flex-direction:column;
+    gap: 25px;
+    margin: 25px;
+}
+
+header {
+    align-self: center;
+}
+
+#site-showcase {
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+    align-self: center;
+}
+
+.project-display {
+    height: auto;
+    width: 350px;
+    text-align: center;
+    background-color: azure;
+}
+
+#about {
+    display: flex;
+    flex-direction: column;
+}
