@@ -1,0 +1,15 @@
+
+
+#dice-area {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.die-place {
+    width: 100px;
+    height: 100px;
+    
+}
+
+
