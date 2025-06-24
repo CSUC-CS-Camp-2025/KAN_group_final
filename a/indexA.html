@@ -3,7 +3,8 @@
 
 <head>
     <title>Anthony's Webpage</title>
-    <link rel="stylesheet" href="styleA.css"></style>
+    <link rel="stylesheet" href="styleA.css">
+    </style>
     <script src="https://cdn.jsdelivr.net/npm/p5@1.11.8/lib/p5.min.js" defer></script>
     <script src="yahtzee.js" defer></script>
 </head>
@@ -13,21 +14,56 @@
         <h1>Yahtzee</h1>
         <p>this is testing page</p>
         <div id="dice-area">
-            <div id="boardOne" class ="dieOnBoard"></div>
-            <div id="boardTwo" class ="dieOnBoard"></div>
-            <div id="boardThree" class ="dieOnBoard"></div>
-            <div id="boardFour" class ="dieOnBoard"></div>
-            <div id="boardFive" class ="dieOnBoard"></div>
+            <div id="boardOne" class="dieOnBoard"></div>
+            <div id="boardTwo" class="dieOnBoard"></div>
+            <div id="boardThree" class="dieOnBoard"></div>
+            <div id="boardFour" class="dieOnBoard"></div>
+            <div id="boardFive" class="dieOnBoard"></div>
         </div>
         <button id="rollButton">Click me!</button>
     </main>
 
     <div id="selected-dice">
     </div>
-    
-    <aside>
 
-    </aside>
+
+    <div id="scoreboard">
+        <h3>Upper Section</h3>
+        <div id="scoreboard-section">
+            <div class="label">Aces</div>
+            <div></div>
+            <div class="label">Twos</div>
+            <div></div>
+            <div class="label">Threes</div>
+            <div></div>
+            <div class="label">Fours</div>
+            <div></div>
+            <div class="label">Fives</div>
+            <div></div>
+            <div class="label">Sixes</div>
+            <div></div>
+            <div class="label">Bonus</div>
+            <div></div>
+        </div>
+        <br>
+        <h3>Lower Section</h3>
+        <div id="scoreboard-section">
+            <div class="label">3 of a Kind</div>
+            <div></div>
+            <div class="label">4 of a Kind</div>
+            <div></div>
+            <div class="label">Full House</div>
+            <div></div>
+            <div class="label">Small Straight</div>
+            <div></div>
+            <div class="label">Large Straight</div>
+            <div></div>
+            <div class="label">Yahtzee</div>
+            <div></div>
+            <div class="label">Chance</div>
+            <div></div>
+        </div>
+    </div>
 </body>
 
 </html>

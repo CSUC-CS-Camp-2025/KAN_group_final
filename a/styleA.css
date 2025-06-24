@@ -3,12 +3,19 @@ body {
     flex-direction: row;
     gap: 50px;
     background-color: antiquewhite;
+    margin: 25px;
+}
+
+main {
+    width: 60%;
+    height: auto;
 }
 
 #dice-area {
     display: flex;
     flex-direction: row;
     gap: 10px;
+    flex-wrap: wrap;
 }
 
 .dieOnBoard {
@@ -21,6 +28,15 @@ body {
     width: 100px;
     height: 100px;
     box-shadow: 10px 10px;
+}
+
+#selected-dice {
+    width: 20%;
+    height: auto;
+    justify-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 div [value = 'one'] {
@@ -47,3 +63,18 @@ div [value = 'six'] {
     background-image: url('images/six.png');
 }
 
+#scoreboard {
+    text-align: center;
+    width: 20%;
+}
+
+#scoreboard-section {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+#scoreboard-section div {
+    border: 1.5px solid black;
+    text-align: center;
+    padding: 10px;
+}

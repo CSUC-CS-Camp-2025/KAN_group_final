@@ -21,7 +21,6 @@ function randomizeDie() {
 
 //randomizes all dice and populates dice[]
 function rollDice() {
-    clearDice();
     for (let i = 0; i < diceOnBoard.length; i++) {
         dice.push(randomizeDie());
     }
@@ -58,8 +57,8 @@ function drawDice() {
 }
 
 btn.addEventListener('click', () => {
-    diceOnBoard = document.getElementsByClassName('dieOnBoard');
-    dice = [];
+    diceOnBoard = document.getElementsByClassName('dieOnBoard'); //re-init the diceOnBoard
+    dice = []; //clears dice before rolling
     rollDice();
     drawDice();
     setBoardELs();
@@ -71,10 +70,10 @@ function setBoardELs() {
     boardOne.addEventListener('click', () => {
         let element = document.createElement('div'); //init new div
         element.setAttribute('class', 'selectedDie'); //sets class to selected dice
-        element.setAttribute('id', 'selectedOne');
-        element.setAttribute('value', boardOne.getAttribute('value'));
-        selectedDiceContainer.append(element);
-        boardOne.remove();
+        element.setAttribute('id', 'selectedOne'); //sets id to selected
+        element.setAttribute('value', boardOne.getAttribute('value')); //gets value from die and passes it to new die
+        selectedDiceContainer.append(element); 
+        boardOne.remove(); //removes original die
     });
     boardTwo.addEventListener('click', () => {
         let element = document.createElement('div');
@@ -108,7 +107,4 @@ function setBoardELs() {
         selectedDiceContainer.append(element);
         boardFive.remove();
     });
-}
-
-function clearDice() {
 }
