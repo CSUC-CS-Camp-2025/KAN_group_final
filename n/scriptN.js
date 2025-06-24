@@ -51,6 +51,12 @@ function setup() {
   hiddenPageButton.mousePressed(() => {
     window.location.href = "indexN2.html"; 
   });
+
+  normalButton = createButton("🦀");
+  normalButton.parent(toolbar);
+  normalButton.mousePressed(() => {
+    window.location.href = "indexN1.html"; 
+  });
 }
 
 function draw() {

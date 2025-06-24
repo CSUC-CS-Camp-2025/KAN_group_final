@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comfort Page</title>
+  <link rel="stylesheet" href="styleN1.css">
+</head>
+<body>
+  <header>
+    <div class="header-left">
+      <img src="https://cdn-icons-png.freepik.com/256/6580/6580706.png" alt="Icon" class="icon">
+      <h3>My Story Page</h3>
+    </div>
+    <button id="menu-toggle">☰</button>
+  </header>
+
+  <nav id="sidebar">
+    <ul>
+      <li><a href="#">Link 1</a></li>
+      <li><a href="#">Link 2</a></li>
+      <li><a href="#">Link 3</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <div class="story-box">
+    <div class="story-content" id="story-box-content">
+    Loading story...
+    </div>
+    </div>
+    <div class="audio-players">
+      <audio controls>
+        <source src="audio1.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+      <audio controls>
+        <source src="audio2.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+      <audio controls>
+        <source src="audio3.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+      <button id="open-video">Watch Video</button>
+
+        <div id="video-modal" class="modal">
+        <div class="modal-content">
+        <span id="close-video" class="close">&times;</span>
+        <video controls>
+         <source src="yourvideo.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+  </div>
+</div>
+    </div>
+    
+  </main>
+
+  <script src="scriptN1.js"></script>
+</body>
+</html>
