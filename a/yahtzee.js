@@ -1,12 +1,18 @@
 
 //Game Variables
 const numDice = 5;
-const dice = [];
+let dice = [];
 let roundNumber = 1;
 
 //DOM elements
 const btn = document.getElementById('rollButton');
-const diceOnBoard = document.getElementsByClassName('die-place');
+diceOnBoard = document.getElementsByClassName('dieOnBoard');
+const boardOne = document.getElementById('boardOne');
+const boardTwo = document.getElementById('boardTwo');
+const boardThree = document.getElementById('boardThree');
+const boardFour = document.getElementById('boardFour');
+const boardFive = document.getElementById('boardFive');
+const selectedDiceContainer = document.getElementById('selected-dice');
 
 // Generates a random integer between 1 and 6
 function randomizeDie() {
@@ -15,7 +21,8 @@ function randomizeDie() {
 
 //randomizes all dice and populates dice[]
 function rollDice() {
-    for (let i = 0; i < numDice; i++) {
+    clearDice();
+    for (let i = 0; i < diceOnBoard.length; i++) {
         dice.push(randomizeDie());
     }
     roundNumber++;
@@ -27,40 +34,81 @@ function getDice() {
 }
 
 //draws dice by reading the dice[] and setting backgroundImages using the diceOnBoard[]
-function drawDice(dice) {
-    for (let i = 0; i<diceOnBoard.length; i++) {
+function drawDice() {
+    for (let i = 0; i < diceOnBoard.length; i++) {
         if (getDice().at(i) == 1) {
-        diceOnBoard.item(i).style.backgroundImage = 'url(images/one.png)';  
+            diceOnBoard.item(i).setAttribute('value', 'one');
         }
         else if (getDice().at(i) == 2) {
-        diceOnBoard.item(i).style.backgroundImage = 'url(images/two.png)';  
+            diceOnBoard.item(i).setAttribute('value', 'two');
         }
         else if (getDice().at(i) == 3) {
-        diceOnBoard.item(i).style.backgroundImage = 'url(images/three.png)';  
+            diceOnBoard.item(i).setAttribute('value', 'three');
         }
         else if (getDice().at(i) == 4) {
-        diceOnBoard.item(i).style.backgroundImage = 'url(images/four.png)';  
+            diceOnBoard.item(i).setAttribute('value', 'four');
         }
         else if (getDice().at(i) == 5) {
-        diceOnBoard.item(i).style.backgroundImage = 'url(images/five.png)';  
+            diceOnBoard.item(i).setAttribute('value', 'five');
         }
         else {
-        diceOnBoard.item(i).style.backgroundImage = 'url(images/six.png)';  
+            diceOnBoard.item(i).setAttribute('value', 'six');
         }
-    }
-}
-
-//pops all elements in dice[]
-function clearDice() {
-    for (let i = 0; i < numDice; i++) {
-        dice.pop();
     }
 }
 
 btn.addEventListener('click', () => {
+    diceOnBoard = document.getElementsByClassName('dieOnBoard');
+    dice = [];
     rollDice();
-    console.log(getDice());
     drawDice();
-    clearDice();
+    setBoardELs();
+    console.log(dice);
 });
 
+//sets Event Listeners for dice on board
+function setBoardELs() {
+    boardOne.addEventListener('click', () => {
+        let element = document.createElement('div'); //init new div
+        element.setAttribute('class', 'selectedDie'); //sets class to selected dice
+        element.setAttribute('id', 'selectedOne');
+        element.setAttribute('value', boardOne.getAttribute('value'));
+        selectedDiceContainer.append(element);
+        boardOne.remove();
+    });
+    boardTwo.addEventListener('click', () => {
+        let element = document.createElement('div');
+    element.setAttribute('class', 'selectedDie');
+        element.setAttribute('id', 'selectedTwo');
+        element.setAttribute('value', boardTwo.getAttribute('value'));
+        selectedDiceContainer.append(element);
+        boardTwo.remove();
+    });
+    boardThree.addEventListener('click', () => {
+        let element = document.createElement('div');
+    element.setAttribute('class', 'selectedDie');
+        element.setAttribute('id', 'selectedThree');
+        element.setAttribute('value', boardThree.getAttribute('value'));
+        selectedDiceContainer.append(element);
+        boardThree.remove();
+    });
+    boardFour.addEventListener('click', () => {
+        let element = document.createElement('div');
+    element.setAttribute('class', 'selectedDie');
+        element.setAttribute('id', 'selectedFour');
+        element.setAttribute('value', boardFour.getAttribute('value'));
+        selectedDiceContainer.append(element);
+        boardFour.remove();
+    });
+    boardFive.addEventListener('click', () => {
+        let element = document.createElement('div');
+    element.setAttribute('class', 'selectedDie');
+        element.setAttribute('id', 'selectedFive');
+        element.setAttribute('value', boardFive.getAttribute('value'));
+        selectedDiceContainer.append(element);
+        boardFive.remove();
+    });
+}
+
+function clearDice() {
+}

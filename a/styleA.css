@@ -1,4 +1,9 @@
-
+body {
+    display:flex;
+    flex-direction: row;
+    gap: 50px;
+    background-color: antiquewhite;
+}
 
 #dice-area {
     display: flex;
@@ -6,10 +11,39 @@
     gap: 10px;
 }
 
-.die-place {
+.dieOnBoard {
     width: 100px;
     height: 100px;
-    
+    box-shadow: 10px 10px;
 }
 
+.selectedDie {
+    width: 100px;
+    height: 100px;
+    box-shadow: 10px 10px;
+}
+
+div [value = 'one'] {
+    background-image: url('images/one.png');
+}
+
+div [value = 'two'] {
+    background-image: url('images/two.png');
+}
+
+div [value = 'three'] {
+    background-image: url('images/three.png');
+}
+
+div [value = 'four'] {
+    background-image: url('images/four.png');
+}
+
+div [value = 'five'] {
+    background-image: url('images/five.png');
+}
+
+div [value = 'six'] {
+    background-image: url('images/six.png');
+}
 
