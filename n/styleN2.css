@@ -1,0 +1,151 @@
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  background-size: 400% 400%;
+  animation: gradientFlow 20s ease infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Courier New', monospace;
+  color: white;
+  text-align: center;
+  overflow: hidden;
+}
+
+@keyframes gradientFlow {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+
+audio {
+  display: none;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  z-index: 2;
+}
+
+.portal {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  box-shadow: 0 0 30px rgba(255,255,255,0.2);
+  animation: pulse 4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.8; }
+}
+
+.mystery-link {
+  color: gold;
+  text-decoration: none;
+  margin-top: 20px;
+  transition: all 0.3s ease;
+}
+
+.mystery-link:hover {
+  color: #f0e68c;
+  text-shadow: 0 0 5px white;
+}
+
+#quack-btn {
+  background: gold;
+  border: none;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  padding: 10px 20px;
+  cursor: pointer;
+  animation: lazySpin 10s linear infinite;
+  transition: background 0.3s ease;
+}
+
+#quack-btn:hover {
+  background: #ffd700;
+}
+
+@keyframes lazySpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.duck {
+  position: absolute;
+  font-size: 2rem;
+  animation: floatDuck 10s linear infinite;
+  pointer-events: none;
+  user-select: none;
+}
+
+@keyframes floatDuck {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-200px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+body.glitch {
+  animation: glitchEffect 0.5s steps(2, start) infinite;
+}
+
+@keyframes glitchEffect {
+  0% { filter: hue-rotate(0deg) saturate(1); }
+  50% { filter: hue-rotate(180deg) saturate(10); }
+  100% { filter: hue-rotate(360deg) saturate(1); }
+}
+
+/* Cracked portal effect */
+.portal.cracked {
+  box-shadow: 0 0 40px rgba(255, 0, 0, 0.3);
+  animation: pulseCrack 1s infinite;
+}
+
+@keyframes pulseCrack {
+  0% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.8; }
+}
+
+/* Optional: styling for the progressive unlock message */
+#prophecy {
+  color: #ccc;
+  font-style: italic;
+  font-size: 1.1rem;
+  transition: opacity 1s ease;
+  margin-top: 40px;
+  opacity: 0;
+}
+body.phase-2 #prophecy {
+  opacity: 1;
+}
+
+#secret-hatch-btn {
+  background: #8B4513; /* dark golden brown */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+#secret-hatch-btn:hover {
+  background: #A0522D;
+}
