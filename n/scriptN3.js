@@ -100,3 +100,19 @@ document.addEventListener("keydown", (e) => {
 // Start everything
 setInterval(spawnDuck, 800);
 gameLoop();
+
+// Background music autoplay
+  const bgMusic = document.getElementById("bg-music");
+  if (bgMusic) {
+    bgMusic.volume = 0.2;
+    bgMusic.play().catch(() => {
+      console.log("Autoplay blocked. Will play on interaction.");
+    });
+  }
+
+  // Resume music on click if blocked
+  document.addEventListener("click", () => {
+    if (bgMusic && bgMusic.paused) {
+      bgMusic.play();
+    }
+  });

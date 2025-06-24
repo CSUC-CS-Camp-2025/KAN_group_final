@@ -6,7 +6,7 @@ body {
 }
 
 header {
-  background-color: #DFE4E9;
+  background-color: #bcc5ce;
   padding: 10px 20px;
   display: flex;
   justify-content: space-between;
@@ -157,4 +157,3 @@ audio {
   right: 20px;
   cursor: pointer;
 }
-

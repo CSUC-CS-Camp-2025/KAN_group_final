@@ -2,8 +2,6 @@ body {
   margin: 0;
   padding: 0;
   font-family: Georgia, 'Times New Roman', Times, serif;
-  background-color: #96a9b3;
-  background-image: url("https://i.pinimg.com/originals/c4/cb/e0/c4cbe0d6552d2fb6c1483f6bff42225d.gif");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -29,7 +27,7 @@ h1 {
 }
 
 #canvasContainer {
-  border: 3px solid #76c8ed;
+  border: 3px solid #94a6b8;
   background-color: #ffffff;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);

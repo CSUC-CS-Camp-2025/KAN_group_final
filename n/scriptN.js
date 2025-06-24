@@ -14,79 +14,64 @@ function setup() {
   container.style("alignItems", "center");
   container.style("gap", "10px");
   container.style("width", "850px");
+  container.parent("canvasContainer");
 
-  const canvasContainer = createDiv().id("canvasContainer").parent(container);
-  const c = createCanvas(800, 450);
+  const canvasContainer = createDiv().id("canvasWrap").parent(container);
+  const c = createCanvas(840, 420);
   c.parent(canvasContainer);
 
   const toolbar = createDiv().id("toolbar").parent(container);
 
-  colorPicker = createColorPicker("#000000");
-  colorPicker.parent(toolbar);
+  colorPicker = createColorPicker("#000000").parent(toolbar);
 
   thicknessButton = createButton("Thick Stroke");
-  thicknessButton.mousePressed(toggleThickness);
-  thicknessButton.parent(toolbar);
+  thicknessButton.mousePressed(toggleThickness).parent(toolbar);
 
   clearButton = createButton("Clear");
-  clearButton.mousePressed(clearCanvas);
-  clearButton.parent(toolbar);
+  clearButton.mousePressed(clearCanvas).parent(toolbar);
 
   undoButton = createButton("Undo");
-  undoButton.mousePressed(undoStroke);
-  undoButton.parent(toolbar);
+  undoButton.mousePressed(undoStroke).parent(toolbar);
 
   saveButton = createButton("Save");
-  saveButton.mousePressed(saveDrawing);
-  saveButton.parent(toolbar);
+  saveButton.mousePressed(saveDrawing).parent(toolbar);
 
-  bgColorPicker = createColorPicker("#ffffff");
-  bgColorPicker.parent(toolbar);
-   
+  bgColorPicker = createColorPicker("#ffffff").parent(toolbar);
+
   imgInput = createFileInput(handleImageUpload);
   imgInput.parent(toolbar);
-  
-  hiddenPageButton = createButton("🦆");
-  hiddenPageButton.parent(toolbar);
-  hiddenPageButton.mousePressed(() => {
-    window.location.href = "indexN2.html"; 
+
+  hiddenPageButton = createButton("🦆").parent(toolbar).mousePressed(() => {
+    window.location.href = "indexN2.html";
   });
 
-  normalButton = createButton("🦀");
-  normalButton.parent(toolbar);
-  normalButton.mousePressed(() => {
-    window.location.href = "indexN1.html"; 
+  normalButton = createButton("🦀").parent(toolbar).mousePressed(() => {
+    window.location.href = "indexN1.html";
   });
 }
 
 function draw() {
   background(bgColorPicker.color());
 
-  // Draw uploaded image if exists
   if (uploadedImage) {
     image(uploadedImage, 0, 0, width, height);
   }
 
-  // Draw all previous strokes
   for (let strokePath of strokes) {
-    for (let i = 1; i < strokePath.length; i++) {
-      let p1 = strokePath[i - 1];
-      let p2 = strokePath[i];
-      stroke(p2.color);
-      strokeWeight(p2.weight);
-      line(p1.x, p1.y, p2.x, p2.y);
-    }
+    drawStroke(strokePath);
   }
 
-  // Draw the currently active stroke
-  if (currentStroke.length > 1) {
-    for (let i = 1; i < currentStroke.length; i++) {
-      let p1 = currentStroke[i - 1];
-      let p2 = currentStroke[i];
-      stroke(p2.color);
-      strokeWeight(p2.weight);
-      line(p1.x, p1.y, p2.x, p2.y);
-    }
+  drawStroke(currentStroke);
+}
+
+function drawStroke(strokePath) {
+  if (strokePath.length < 2) return;
+  for (let i = 1; i < strokePath.length; i++) {
+    let p1 = strokePath[i - 1];
+    let p2 = strokePath[i];
+    stroke(p2.color);
+    strokeWeight(p2.weight);
+    line(p1.x, p1.y, p2.x, p2.y);
   }
 }
 
@@ -105,7 +90,7 @@ function mouseReleased() {
   if (currentStroke.length > 0) {
     strokes.push(currentStroke);
     currentStroke = [];
-    undoneStrokes = []; // clear redo stack
+    undoneStrokes = [];
   }
 }
 
@@ -126,12 +111,6 @@ function undoStroke() {
   }
 }
 
-function redoStroke() {
-  if (undoneStrokes.length > 0) {
-    strokes.push(undoneStrokes.pop());
-  }
-}
-
 function saveDrawing() {
   saveCanvas("my-drawing", "png");
 }
@@ -147,4 +126,3 @@ function handleImageUpload(file) {
     console.log("File is not an image.");
   }
 }
-

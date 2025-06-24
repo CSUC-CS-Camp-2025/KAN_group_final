@@ -5,12 +5,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Comfort Page</title>
   <link rel="stylesheet" href="styleN1.css">
+  <link rel="stylesheet" href="styleN.css">
+    
+        <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/addons/p5.dom.min.js"></script>
 </head>
 <body>
   <header>
     <div class="header-left">
       <img src="https://cdn-icons-png.freepik.com/256/6580/6580706.png" alt="Icon" class="icon">
       <h3>My Story Page</h3>
+    </div>
+</div>
+    <div class="audio-players">
+      <audio controls>
+        <source src="Halcali - Otsukare Summer 4.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+      <audio controls>
+        <source src="Calcifer_ you're being so obedient. (Howl's Moving Castle playlist).mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+      <audio controls>
+        <source src="[reupload] 𝐩𝐥𝐚𝐲𝐥𝐢𝐬𝐭 _ childhood nostalgia (studio ghibli vibes, joe hisaishi, relaxation + healing).mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+      <button id="open-video">Watch Video</button>
+
+        <div id="video-modal" class="modal">
+        <div class="modal-content">
+        <span id="close-video" class="close">&times;</span>
+        <video controls>
+         <source src="Legends Summarized_ The Monkey King (Journey To The West Part 1).mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+  </div>
+</div>
     </div>
     <button id="menu-toggle">☰</button>
   </header>
@@ -24,39 +54,14 @@
   </nav>
 
   <main>
-    <div class="story-box">
-    <div class="story-content" id="story-box-content">
-    Loading story...
-    </div>
-    </div>
-    <div class="audio-players">
-      <audio controls>
-        <source src="audio1.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-      </audio>
-      <audio controls>
-        <source src="audio2.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-      </audio>
-      <audio controls>
-        <source src="audio3.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-      </audio>
-      <button id="open-video">Watch Video</button>
+    <div id="canvasContainer"></div>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script>
+    <script src="scriptN.js"></script>
 
-        <div id="video-modal" class="modal">
-        <div class="modal-content">
-        <span id="close-video" class="close">&times;</span>
-        <video controls>
-         <source src="yourvideo.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-  </div>
-</div>
-    </div>
+    
     
   </main>
 
-  <script src="scriptN1.js"></script>
+    <script src="scriptN1.js"></script>
 </body>
 </html>
