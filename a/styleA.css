@@ -33,7 +33,7 @@ main {
 #selected-dice {
     width: 20%;
     height: auto;
-    justify-items: center;
+    align-items: center;
     display: flex;
     flex-direction: column;
     gap: 10px;
