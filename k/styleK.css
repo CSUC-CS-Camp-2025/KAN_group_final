@@ -1,0 +1,59 @@
+
+body
+{
+    background-image: url ("");
+    background-color: rgb(137, 7, 29);
+}
+
+h1
+{
+    color:rgb(56, 21, 14);
+    font-family:impact;
+    text-align:center;
+    text-shadow: 2px 2px rgb(255, 247, 247);
+    background-color: rgb(155, 61, 61); width:1500px; height:100px; align-self: center; align-content:center;
+    border: 2px solid rgb(42, 8, 8);
+    border-radius: 2px;
+}
+
+/*
+main
+{
+    
+}
+*/
+
+center 
+{
+    background-image: url("fence.png");
+    background-size:cover;
+    width:600px;
+    height:500px;
+    align-self: center;
+}
+
+figure2 
+{
+    align-content: center;
+}
+
+
+
+
+div 
+{
+    width:300px;
+    border: 15px rgb(155, 80, 80);
+    padding: 10px;
+    margin:auto20px;
+}
+
+button
+{
+    font-family: impact;
+    color:rgb(75, 26, 26);
+    background-color: rgb(215, 125, 125);
+    border: 2px solid rgb(68, 22, 22);
+    text-align:center;
+}
+
