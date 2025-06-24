@@ -9,3 +9,5 @@ aliah doesnt know yet.
 anthony is coding yatzhee in Javascript
 
 we will update this as we go <3
+
+(ノω<。)ノ))☆.。

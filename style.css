@@ -1,29 +1,264 @@
+/*NOTES FOR ANYONE READING THIS: I went overboard in many ways but i had to much energy
+so i apologize in advance. also, if your wondering why the heck theres some mobile
+user friendly bits, its cause my mom looks at these on her phone. -Namiko */
+
+
+/* Reset & basics */
 body {
-    display:flex;
-    flex-direction:column;
-    gap: 25px;
-    margin: 25px;
+  background-color: #F7E1D7;
+  margin: 0;
+  font-family: 'Fredoka', sans-serif;
+  padding-top: 60px; /* SHOULD match header height (probably doesnt tbh)*/
+  margin-bottom: 60px;
 }
 
-header {
-    align-self: center;
+/* === Header === */
+.top-header {
+  position: fixed;
+  top: 0; left: 0; width: 100%;
+  height: 62px;
+  padding: 6px 20px;
+  background-color: #EDAFB8;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  z-index: 1000;
 }
 
-#site-showcase {
-    display: flex;
-    flex-direction: row;
-    gap: 25px;
-    align-self: center;
+.header-content {
+  display: flex;
+  justify-content: space-between; /* pushes left and right apart */
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative; /* so dropdown absolute positions relative to here */
+  gap: 15px;
+  padding: 0 20px;
 }
 
-.project-display {
-    height: auto;
-    width: 350px;
-    text-align: center;
-    background-color: azure;
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-#about {
-    display: flex;
+.header-right {
+  position: relative; /* important for dropdown absolute inside */
+}
+
+.header-icon {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.header-title {
+  color: #f0f0f8;
+  font-weight: 700;
+  font-size: 1.8rem;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute; /* so it overlays */
+  right: 0;
+  top: 100%; /* right below the toggle button */
+  background-color: #ffffff;
+  padding: 10px;
+  border-radius: 1px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  z-index: 1001;
+  min-width: 150px;
+}
+
+.dropdown-menu a {
+  display: block;
+  color: rgb(131, 147, 158);
+  padding: 8px 12px;
+  text-decoration: none;
+}
+
+.dropdown-menu a:hover {
+  background-color: #EDAFB8;
+}
+
+/* When active/show class is toggled, display it */
+.dropdown-menu.show {
+  display: block;
+}
+
+
+/* === Main section === */
+.main-section {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+
+  width: 80%; /* or a fixed width if you prefer */
+  max-width: 1000px;
+  z-index: 10;
+}
+
+@media (max-width: 700px) {
+  .main-section {
     flex-direction: column;
+    width: 90%;
+    gap: 20px;
+  }
+}
+
+.letter-box {
+  width: 200px;
+  height: 220px;
+  border-radius: 3px;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  font-size: 4rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* Glow shadows */
+  box-shadow:
+    0 0 20px 8px rgba(237, 175, 184),
+    0 0 30px 10px rgba(237, 175, 184);
+}
+
+.letter-box:hover {
+  transform: scale(1.05) rotate(1deg);
+  box-shadow: 0 10px 20px rgba(237, 175, 184);
+  animation: wiggle 0.3s ease;
+}
+
+.letter-box span {
+  font-weight: 800;
+  color: #EDAFB8;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
+  pointer-events: none;
+}
+
+/* Color themes */
+.redcolor {
+  background: linear-gradient(135deg, #B0C4B1, #DEDBD2);
+  box-shadow: 0 0 20px 8px rgba(255, 255, 255, 0.7);
+}
+
+.purplecolor {
+  background: linear-gradient(135deg, #B0C4B1, #DEDBD2);
+  box-shadow: 0 0 20px 8px rgba(255, 255, 255, 0.7);
+}
+
+.bluecolor {
+  background: linear-gradient(135deg, #B0C4B1, #DEDBD2);
+  box-shadow: 0 0 20px 8px rgba(255, 255, 255, 0.7);
+}
+
+/* Arrows */
+.arrow {
+  font-size: 2.2rem;
+  cursor: pointer;
+  user-select: none;
+  padding: 10px;
+  border-radius: 0%;
+  background-color: #F7E1D7;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.arrow:hover {
+  background-color: #EDAFB8;
+  transform: scale(1.1);
+}
+
+.left-arrow { margin-right: 10px; }
+.right-arrow { margin-left: 10px; }
+
+/* Responsive for small screens (for mom) */
+@media (max-width: 800px) {
+  .main-section {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .letter-box {
+    width: 70%;
+    height: 180px;
+    font-size: 3.5rem;
+  }
+
+  .arrow {
+    display: none;
+  }
+}
+
+/* === Folder tabs === */
+.folder-tabs {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #B0C4B1;
+  border-top: 2px solid #f1b6b6;
+  border-radius: 12px 12px 0 0;
+  box-shadow: 0 -4px 12px rgba(255, 255, 255, 0.1);
+  font-family: 'Fredoka', sans-serif;
+  z-index: 999;
+}
+
+.tab-buttons {
+  display: flex;
+  border-bottom: 2px solid #DEDBD2;
+  background-color: #B0C4B1;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 12px 20px;
+  border: none;
+  background-color: #B0C4B1;
+  font-weight: bold;
+  cursor: pointer;
+  border-top-left-radius: 1px;
+  border-top-right-radius: 1px;
+  transition: background-color 0.2s ease;
+}
+
+.tab-btn:hover {
+  background-color: #DEDBD2;
+}
+
+.tab-btn.active {
+  background-color: #DEDBD2;
+  border-bottom: 2px solid #4A5759;
+}
+
+.tab-content-container {
+  padding: 16px 20px;
+  font-size: 1.1rem;
+  color: #ffffff;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* === Icon images inside boxes === */
+.icon-img {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+  pointer-events: none;
+  filter: drop-shadow(0 0 5px rgba(0,0,0,0.2));
 }

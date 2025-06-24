@@ -1,39 +1,71 @@
-<!DOCTYPE html>
-<html>
-
+<!DOCTYPE html><!--HTML my beloved-->
+<html lang="en">
 <head>
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KAN FINAL</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600&display=swap" rel="stylesheet" />
 </head>
-
 <body>
-    <header>
-        <h1>KAN Group Final Project</h1>
-    </header>
+  <header class="top-header" role="banner">
+    <div class="header-content">
+      <div class="header-left">
+        <img src="https://cdn-icons-png.flaticon.com/512/10658/10658879.png" alt="Site Icon" class="header-icon" />
+        <h1 class="header-title">KAN FINAL</h1>
+      </div>
+      <div class="header-right" role="navigation" aria-label="Main menu">
+        <button id="menu-toggle" aria-label="Toggle menu" aria-haspopup="true" aria-expanded="false">☰</button>
+        <nav id="dropdown-menu" class="dropdown-menu" aria-hidden="true" tabindex="-1">
+          <a href="k/indexK.html">Aliah</a>
+          <a href="a/indexA.html">Anthony</a>
+          <a href="n/indexN.html">Namiko</a>
+        </nav>
+      </div>
+    </div>
+  </header>
 
-        <div id='site-showcase'>
-            <div class='project-display'>
-                <a href="k/indexK.html">Aliyah's site</a>
-                <p>This is a short description of Aliyah's site.</p>
-            </div>
-            <div class='project-display'>
-                <a href="a/indexA.html">Anthony's Site</a>
-                <p>This is a short description of Anthony's site.</p>
-            </div>
-            <div class='project-display'>
-                <a href="n/indexN.html">Namiko's Site</a>
-                <p>This is a short description of Namiko's site.</p>
-            </div>
-        </div>
+  <main>
+    <section class="main-section" aria-label="Main navigation">
+      <div class="arrow left-arrow" role="button" tabindex="0" aria-label="Previous page">🢀</div>
 
-        <div id="about">
-            <h2>About</h2>
-            <p>
-                This is a short decription of the project and its purpose. Maybe also a short explanation of the goals
-                of the project.
-            </p>
+      <a href="k/indexK.html" class="letter-box redcolor" aria-label="Go to K page">
+        <img src="https://cdn-icons-png.flaticon.com/512/1237/1237619.png" alt="K icon" class="icon-img" />
+      </a>
+      <a href="a/indexA.html" class="letter-box purplecolor" aria-label="Go to A page">
+        <img src="https://images.vexels.com/media/users/3/331687/isolated/preview/c5b6a034dbafa0cc8cdf657662ab947d-dice-with-a-flower-and-leaves-on-it.png" alt="A icon" class="icon-img" />
+      </a>
+      <a href="n/indexN.html" class="letter-box bluecolor" aria-label="Go to N page">
+        <img src="https://cdn-icons-png.flaticon.com/512/14950/14950601.png" alt="N icon" class="icon-img" />
+      </a>
+
+      <div class="arrow right-arrow" role="button" tabindex="0" aria-label="Next page">🢂</div>
+    </section>
+
+    <section class="folder-tabs" aria-label="Information tabs">
+      <div class="tab-buttons" role="tablist">
+        <button class="tab-btn active" data-tab="tab1" role="tab" aria-selected="true" aria-controls="tab1" id="tab1-btn">Overview</button>
+        <button class="tab-btn" data-tab="tab2" role="tab" aria-selected="false" aria-controls="tab2" id="tab2-btn">Details</button>
+        <button class="tab-btn" data-tab="tab3" role="tab" aria-selected="false" aria-controls="tab3" id="tab3-btn">Credits</button>
+      </div>
+
+      <div class="tab-content-container">
+        <div id="tab1" class="tab-content active" role="tabpanel" aria-labelledby="tab1-btn" tabindex="0">
+          <p>Welcome to the KAN FINAL homepage! Click any of the three icon panels to be brought to a special
+                minigame or activity made by a member~ </p>
         </div>
-    
+        <div id="tab2" class="tab-content" role="tabpanel" aria-labelledby="tab2-btn" tabindex="0">
+          <p>This site is built with HTML, CSS, and JavaScript as our Computer Science Summer Camp Final Project 
+                (long title, I know) and is the culminated work of three awesome people!</p>
+        </div>
+        <div id="tab3" class="tab-content" role="tabpanel" aria-labelledby="tab3-btn" tabindex="0">
+          <p>Main page was made with ✨ by Nami!<br>Each page was made by their respective owners,
+                all credit for each page goes repectively to Aliah, Anthony, and Namiko A</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
 </body>
-
 </html>
