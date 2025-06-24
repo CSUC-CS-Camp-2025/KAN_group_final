@@ -5,6 +5,7 @@
     <script src="https://cdn.jsdelivr.net/npm/p5@1.11.8/lib/p5.min.js"></script>
     <title>K</title>
 </head>
+<center>
 <body> 
 
 
@@ -15,16 +16,38 @@
     <header>
 
         
-        <h1>Poppy</h1>
+        <h1>---Pick Your Flower---</h1>
 
     </header>
-    <center>
+
     
-        <img src="poppppppyyyy.gif"style ="width: 200px; height: 200px;">
+    <h2> You will be given a fact!! 
+        <br> 
+    </h2>
+
     
-    </center>
+    <figure>
+    
+        <img 
+        id="clickableimage"
+        src="poppppppyyyy.gif"style ="width: 200px; height: 200px;"
+        alt="click me to go to another page"
+        style="cursor :pointer; width: 300px; height:auto;">
+
+        <script>
+            const image = document.getElementById("clickableimage");
+            image.addEventListener("click", ()=>
+        {
+            window.location.href = "indexKK.html";
+        })
+
+        </script>
+
+
+    </figure>
 
 </body>
+</center>
 <script src="scriptK.js"></script>
 
 

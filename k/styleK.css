@@ -7,35 +7,43 @@ body
 
 h1
 {
-    color:rgb(56, 21, 14);
+    color:rgb(125, 46, 31);
     font-family:impact;
     text-align:center;
     text-shadow: 2px 2px rgb(255, 247, 247);
-    background-color: rgb(155, 61, 61); width:1500px; height:100px; align-self: center; align-content:center;
-    border: 2px solid rgb(42, 8, 8);
-    border-radius: 2px;
+    background-color: rgb(232, 110, 110); width:1500px; height:100px; align-self: center; align-content:center;
+    border: 5px solid rgb(42, 8, 8);
+    border-radius: 120px;
 }
 
-/*
-main
+h2
 {
-    
+ color:rgb(227, 109, 85);
+    font-family:impact;
+    text-align:center;
+    text-shadow: 2px 2px rgb(251, 228, 228);
+    background-color: rgb(109, 19, 19); width:400px; height:70px; align-self: center; align-content:center;
+    border: 4px dotted rgb(245, 116, 116);
+    border-radius: 20px;
 }
-*/
 
-center 
+
+
+
+
+figure
 {
-    background-image: url("fence.png");
+    background-image:url("fence.png");
     background-size:cover;
-    width:600px;
+    width:900px;
     height:500px;
-    align-self: center;
+    align-content:end;
+    border: 6px solid rgb(253, 148, 148);
+    border-radius: 20px;
+    box-shadow: 0 0 15px 5px #fffbf6;
 }
 
-figure2 
-{
-    align-content: center;
-}
+
 
 
 
@@ -45,7 +53,6 @@ div
     width:300px;
     border: 15px rgb(155, 80, 80);
     padding: 10px;
-    margin:auto20px;
 }
 
 button
