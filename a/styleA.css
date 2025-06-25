@@ -1,15 +1,145 @@
+body {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    background-color: var(--first);
+    margin: 25px;
+}
 
+:root {
+    --first: #7F55B1;
+    --second: #9B7EBD;
+    --third: #F49BAB;
+    --fourth: #FFE1E0;
+}
+
+main {
+    width: 60%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+main h1 {
+    color: var(--fourth);
+    font-family: "Caprasimo", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 60px;
+    margin: 25px 0px 25px;
+}
 
 #dice-area {
     display: flex;
     flex-direction: row;
     gap: 10px;
+    flex-wrap: wrap;
 }
 
-.die-place {
+.dieOnBoard {
     width: 100px;
     height: 100px;
-    
+    box-shadow: 10px 10px;
+    border-radius: 10px;
+
 }
 
+.selectedDie {
+    width: 100px;
+    height: 100px;
+    box-shadow: 10px 10px;
+    border-radius: 10px;
 
+}
+
+#selected-dice {
+    width: 20%;
+    height: auto;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#rollButton {
+    border: none;
+    color: var(--fourth);
+    cursor: pointer;
+    text-align: center;
+    font-size: 20px;
+    background-color: var(--second);
+    padding: 10px 25px 10px 25px;
+    margin: 10px 5px 10px;
+    border-radius: 5px;
+    font-family: "Quattrocento", serif;
+    font-weight: 400;
+    font-style: normal;
+    width: 30%;
+}
+
+div [value='one'] {
+    background-image: url('images/one.png');
+}
+
+div [value='two'] {
+    background-image: url('images/two.png');
+}
+
+div [value='three'] {
+    background-image: url('images/three.png');
+}
+
+div [value='four'] {
+    background-image: url('images/four.png');
+}
+
+div [value='five'] {
+    background-image: url('images/five.png');
+}
+
+div [value='six'] {
+    background-image: url('images/six.png');
+}
+
+#scoreboard {
+    text-align: center;
+    width: 20%;
+    padding: 25px;
+    background-color: white;
+}
+
+#scoreboard h3 {
+    font-weight: bold;
+    margin-top: 0px;
+}
+
+#scoreboard-section {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+#scoreboard-section div {
+    border: 1.5px solid black;
+    text-align: center;
+    padding: 10px;
+}
+
+.label {
+    font-family: "Quattrocento", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+[value='invisible'] {
+    opacity: 0;
+}
+
+[value='visible'] {
+    opacity: 1;
+}
+
+footer img {
+    width: 50px;
+    height: auto;
+    filter: ;
+}
