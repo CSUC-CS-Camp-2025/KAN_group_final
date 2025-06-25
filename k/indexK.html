@@ -1,55 +1,41 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <link rel="stylesheet" href="styleK.css">
     <script src="https://cdn.jsdelivr.net/npm/p5@1.11.8/lib/p5.min.js"></script>
+    <script src="scriptK.js" defer></script>
+    <script src="scriptnf.js" defer></script>
     <title>K</title>
 </head>
 <center>
-<body> 
+    <body>
+        <div>
+            <button onclick="history.back()">Go Back</button>
+        </div>
+
+        <header>
+
+            <h1>---Pick Your Flower---</h1>
+
+        </header>
 
 
-    <div>
-        <button onclick="history.back()">Go Back</button>
-    </div>
-
-    <header>
-
-        
-        <h1>---Pick Your Flower---</h1>
-
-    </header>
-
-    
-    <h2> You will be given a fact!! 
-        <br> 
-    </h2>
-
-    
-    <figure>
-    
-        <img 
-        id="clickableimage"
-        src="poppy.png"style ="width: 800px; height: 500px;"
-        alt="click me to go to another page"
-        style="cursor :pointer; width: 300px; height:auto;">
-
-        <script>
-            const image = document.getElementById("clickableimage");
-            image.addEventListener("click", ()=>
-        {
-            window.location.href = "indexKK.html";
-        })
-
-        </script>
+        <h2> You will be given a fact!!
+            <br>
+        </h2>
 
 
-    </figure>
+        <figure>
 
-</body>
+            <img id="clickableimage" src="poppy.png" style="width: 200px; cursor :pointer; height:auto;"
+                alt="click me to go to another page">
+
+                 <img id="clickablenotflower" src="notflower.png" style="width: 200px; cursor :pointer; height:auto;"
+                alt="click me to go to another page">
+
+        </figure>
+    </body>
 </center>
-<script src="scriptK.js"></script>
-
 
 </html>
-
