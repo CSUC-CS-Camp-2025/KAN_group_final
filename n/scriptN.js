@@ -45,8 +45,8 @@ function setup() {
     window.location.href = "indexN2.html";
   });
 
-  normalButton = createButton("🦀").parent(toolbar).mousePressed(() => {
-    window.location.href = "indexN1.html";
+  normalButton = createButton("🥚").parent(toolbar).mousePressed(() => {
+    window.location.href = "indexN3.html";
   });
 }
 

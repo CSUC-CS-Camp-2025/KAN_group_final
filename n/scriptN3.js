@@ -19,7 +19,7 @@ function drawDuck(x, y) {
   ctx.stroke();
   ctx.font = "20px sans-serif";
   ctx.fillStyle = "#000";
-  ctx.fillText("🦆", x - 12, y + 8);
+  ctx.fillText("🥚", x - 12, y + 8);
 }
 
 // Check if mouse "caught" the duck
