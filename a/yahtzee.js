@@ -22,13 +22,19 @@ selectedThree = document.getElementById('selectedThree');
 selectedFour = document.getElementById('selectedFour');
 selectedFive = document.getElementById('selectedFive');
 
- setELs();
+
 btn.addEventListener('click', () => {
     if (roundNumber >= 3) {
         clearGame();
+        reInitBoardDice();
+        roundNumber = 0;
     }
     diceOnBoard = document.getElementsByClassName('dieOnBoard'); //re-init the diceOnBoard
     dice = []; //clears dice before rolling
+    if (roundNumber == 0) {
+        console.log('this method ran');
+        setELs();
+    }
     rollDice();
     drawDice();
 });
@@ -49,6 +55,30 @@ function rollDice() {
 //returns dice[]
 function getDice() {
     return dice;
+}
+
+function reInitBoardDice() {
+    for (let i = 1; i <= numDice; i++) {
+        let element = document.createElement('div');
+        setAttributes(element, { 'class': 'dieOnBoard', 'id': 'board' + numToString(i) });
+        boardDiceContainer.append(element);
+    }
+}
+
+// converts a number to the equivalent string with the 1st letter capitalized
+function numToString(num) {
+    switch (num) {
+        case 1:
+            return 'One';
+        case 2:
+            return 'Two';
+        case 3:
+            return 'Three';
+        case 4:
+            return 'Four';
+        case 5:
+            return 'Five';
+    }
 }
 
 //draws dice by reading the dice[] and setting backgroundImages using the diceOnBoard[]
@@ -82,66 +112,15 @@ function setAttributes(element, attributes) {
     }
 }
 
-function checkDuplicates() {
-    let numOnes = 0;
-    let numTwos = 0;
-    let numThrees = 0;
-    let numFours = 0;
-    let numFives = 0;
-    let element;
-    selectedDice = document.getElementsByClassName('selectedDie');
-    for (let i = 0; i < 2; i++) {
-        if (document.getElementById('selectedOne') != null) {
-            numOnes++;
-            console.log('numOnes: ' + numOnes);
-
-        }
-        else if (document.getElementById('selectedTwo') != null) {
-            numTwos++;
-                console.log('numTwos: ' + numTwos);
-
-        }
-        else if (document.getElementById('selectedThree') != null) {
-            numThrees++;
-                console.log('numThrees: ' + numThrees);
-
-        }
-        else if (document.getElementById('selectedFour') != null) {
-            numFours++;
-                console.log('numFours: ' + numFours);
-
-        }
-        else if (document.getElementById('selectedFive') != null) {
-            numFives++;
-                console.log('numFives: ' + numFives);
-
-        }
-    }
-    console.log(selectedDice.length);
-    if (numOnes > 1) {
-        element = document.getElementById('selectedOne');
-        element.remove();
-    }
-    else if (numTwos > 1) {
-        element = document.getElementById('selectedTwo');
-        element.remove();
-    }
-    else if (numThrees > 1) {
-        element = document.getElementById('selectedThree');
-        element.remove();
-    }
-    else if (numFours > 1) {
-        element = document.getElementById('selectedFour');
-        element.remove();
-    }
-    else if (numFives > 1) {
-        element = document.getElementById('selectedFive');
-        element.remove();
-    }
-}
-
 //sets Event Listeners for dice on board
 function setELs() {
+    //re inits all board Dice
+    boardOne = document.getElementById('boardOne');
+    boardTwo = document.getElementById('boardTwo');
+    boardThree = document.getElementById('boardThree');
+    boardFour = document.getElementById('boardFour');
+    boardFive = document.getElementById('boardFive');
+
     boardOne.addEventListener('click', () => {
         let element = document.createElement('div'); //init new div
         setAttributes(element, { 'class': 'selectedDie', 'id': 'selectedOne', 'value': boardOne.getAttribute('value') }); //adds all neccesary selected dice attributes

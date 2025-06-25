@@ -65,6 +65,9 @@ main h1 {
     padding: 10px 25px 10px 25px;
     margin: 10px 5px 10px;
     border-radius: 5px;
+    font-family: "Quattrocento", serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 div [value='one'] {
@@ -98,6 +101,11 @@ div [value='six'] {
     background-color: white;
 }
 
+#scoreboard h3 {
+    font-weight: bold;
+    margin-top: 0px;
+}
+
 #scoreboard-section {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -107,4 +115,10 @@ div [value='six'] {
     border: 1.5px solid black;
     text-align: center;
     padding: 10px;
+}
+
+.label {
+  font-family: "Quattrocento", serif;
+  font-weight: 400;
+  font-style: normal;
 }

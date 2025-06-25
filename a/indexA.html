@@ -7,12 +7,14 @@
     </style>
     <script src="https://cdn.jsdelivr.net/npm/p5@1.11.8/lib/p5.min.js" defer></script>
     <script src="yahtzee.js" defer></script>
+    <!-- Links for fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caprasimo&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Quattrocento:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
+    <!--Header, Roll Button, and Board Dice Section -->
     <main>
         <h1>Yahtzee</h1>
         <div id="dice-area">
@@ -26,12 +28,13 @@
         <button id="rollButton">Roll</button>
     </main>
 
+    <!-- Selected Dice Section -->
     <div id="selected-dice">
     </div>
 
-
+    <!-- Scoreboard Section -->
     <div id="scoreboard">
-        <h3>Upper Section</h3>
+        <h3 class="label">Upper Section</h3>
         <div id="scoreboard-section">
             <div class="label">Aces</div>
             <div></div>
@@ -49,7 +52,7 @@
             <div></div>
         </div>
         <br>
-        <h3>Lower Section</h3>
+        <h3 class="label">Lower Section</h3>
         <div id="scoreboard-section">
             <div class="label">3 of a Kind</div>
             <div></div>
