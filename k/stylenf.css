@@ -1,26 +1,26 @@
 html
 {
-    background-color:rgb(255, 167, 35)
+    background-color:rgb(148, 40, 40)
 }
 
 h1
 {
-    color:rgb(255, 144, 40);
+    color:rgb(255, 181, 181);
     font-family:impact;
     text-align:center;
-    text-shadow: 2px 2px rgb(255, 247, 247);
-    background-color: rgb(255, 196, 114); width:1500px; height:100px; align-self: center; align-content:center;
-    border: 5px solid rgb(141, 45, 0);
+    text-shadow: 2px 2px rgb(79, 10, 10);
+    background-color: rgb(255, 46, 46); width:1500px; height:100px; align-self: center; align-content:center;
+    border: 5px solid rgb(67, 27, 8);
     border-radius: 120px;
 }
 
 h2
 {
-    color:rgb(255, 193, 135);
+    color:rgb(222, 87, 87);
     font-family:impact;
     text-align:center;
-    text-shadow: 2px 2px rgb(124, 61, 61);
-    border-bottom: 5px dotted rgb(255, 241, 135);
+    text-shadow: 2px 2px rgb(255, 186, 186);
+    border-bottom: 5px dotted rgb(253, 218, 218);
     padding-bottom:10px;
     
 }
@@ -29,15 +29,15 @@ h2
 
 p
 {
-    color:rgb(136, 71, 13);
+    color:rgb(255, 199, 199);
     font-family:impact;
     text-align:center;
-    text-shadow: 2px 2px rgb(255, 244, 160);
-    background-color: rgb(255, 179, 92); width:600px; height:400px; align-self: center; align-content:center;
-    border: 6px dotted rgb(172, 90, 2);
+    text-shadow: 2px 2px rgb(92, 11, 11);
+    background-color: rgb(234, 99, 99); width:600px; height:400px; align-self: center; align-content:center;
+    border: 6px dotted rgb(84, 4, 4);
     border-radius: 20px;
     font-size:40px;
-    box-shadow: 0 0 15px 5px #fff875;
+    box-shadow: 0 0 15px 5px #ff6868;
     
 }
 
@@ -47,9 +47,9 @@ p
 button
 {
     font-family: impact;
-    color:rgb(202, 71, 0);
-    background-color: rgb(255, 230, 121);
-    border: 2px solid rgb(155, 67, 0);
+    color:rgb(222, 37, 37);
+    background-color: rgb(255, 162, 162);
+    border: 2px solid rgb(91, 6, 6);
     text-align:center;
-    box-shadow: 0 0 15px 5px #fffbf6;
+    box-shadow: 0 0 15px 5px #ffb6b6;
 }
