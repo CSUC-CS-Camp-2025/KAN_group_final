@@ -2,7 +2,7 @@
 //Game Variables
 const numDice = 5;
 let dice = [];
-let roundNumber = 0;
+let rollNumber = 0;
 
 //DOM elements
 const btn = document.getElementById('rollButton');
@@ -25,15 +25,15 @@ selectedFive = document.getElementById('selectedFive');
 
 
 btn.addEventListener('click', () => {
-    if (roundNumber >= 3) {
+    if (rollNumber >= 3) {
         clearGame();
         reInitBoardDice();
         roundDisplay = document.getElementsByClassName('round-marker');
-        roundNumber = 0;
+        rollNumber = 0;
     } //clears game, resets rounds, and reinits all board dice
     diceOnBoard = document.getElementsByClassName('dieOnBoard'); //re-init the diceOnBoard
     dice = []; //clears dice before rolling
-    if (roundNumber == 0) {
+    if (rollNumber == 0) {
         setELs();
         resetRoundDisplay();
     } //sets Event Listeners only at start and wehn game resets
@@ -51,7 +51,7 @@ function resetRoundDisplay() {
 
 //sets the appropriate elements to visible to display round number
 function displayRound() {
-    for (let i = 0; i < roundNumber; i ++) {
+    for (let i = 0; i < rollNumber; i ++) {
         roundDisplay.item(i).setAttribute('value', 'visible');
     }
 }
@@ -66,7 +66,7 @@ function rollDice() {
     for (let i = 0; i < diceOnBoard.length; i++) {
         dice.push(randomizeDie());
     }
-    roundNumber++;
+    rollNumber++;
 }
 
 //returns dice[]
