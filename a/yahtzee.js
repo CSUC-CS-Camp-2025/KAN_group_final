@@ -10,6 +10,7 @@ diceOnBoard = document.getElementsByClassName('dieOnBoard');
 selectedDice = document.getElementsByClassName('selectedDie');
 const boardDiceContainer = document.getElementById('dice-area');
 selectedDiceContainer = document.getElementById('selected-dice');
+roundDisplay = document.getElementsByClassName('round-marker');
 //Individual Dice
 boardOne = document.getElementById('boardOne');
 boardTwo = document.getElementById('boardTwo');
@@ -27,17 +28,33 @@ btn.addEventListener('click', () => {
     if (roundNumber >= 3) {
         clearGame();
         reInitBoardDice();
+        roundDisplay = document.getElementsByClassName('round-marker');
         roundNumber = 0;
-    }
+    } //clears game, resets rounds, and reinits all board dice
     diceOnBoard = document.getElementsByClassName('dieOnBoard'); //re-init the diceOnBoard
     dice = []; //clears dice before rolling
     if (roundNumber == 0) {
-        console.log('this method ran');
         setELs();
-    }
+        resetRoundDisplay();
+    } //sets Event Listeners only at start and wehn game resets
     rollDice();
     drawDice();
+    displayRound();
 });
+
+//resets the round dispay to all invisible
+function resetRoundDisplay() {
+    for (let i = 0; i < 3; i++) {
+        roundDisplay.item(i).setAttribute('value', 'invisible');
+    }
+}
+
+//sets the appropriate elements to visible to display round number
+function displayRound() {
+    for (let i = 0; i < roundNumber; i ++) {
+        roundDisplay.item(i).setAttribute('value', 'visible');
+    }
+}
 
 // Generates a random integer between 1 and 6
 function randomizeDie() {
@@ -57,6 +74,7 @@ function getDice() {
     return dice;
 }
 
+//re-inits boardDice elements
 function reInitBoardDice() {
     for (let i = 1; i <= numDice; i++) {
         let element = document.createElement('div');
@@ -83,7 +101,6 @@ function numToString(num) {
 
 //draws dice by reading the dice[] and setting backgroundImages using the diceOnBoard[]
 function drawDice() {
-    //this don't work because it iterates through the loop too many times, based on DiceOnBoard
     for (let i = 0; i < diceOnBoard.length; i++) {
         if (getDice().at(i) == 1) {
             diceOnBoard.item(i).setAttribute('value', 'one');
@@ -130,11 +147,11 @@ function setELs() {
         selectedOne.addEventListener('click', () => {
             let element = document.createElement('div'); //init new div
             setAttributes(element, { 'class': 'dieOnBoard', 'id': 'boardOne', 'value': selectedOne.getAttribute('value') }); //adds all neccesary board dice attributes
-            boardDiceContainer.append(element);
-            boardOne = document.getElementById('boardOne');
-            selectedOne.remove();
+            boardDiceContainer.append(element); //adds new element to board dice
+            boardOne = document.getElementById('boardOne'); //re-init boardOne element
+            selectedOne.remove(); //removes itself
         });
-        boardOne.remove(); //removes original die
+        boardOne.remove(); //removes itself
     });
     boardTwo.addEventListener('click', () => {
         let element = document.createElement('div');

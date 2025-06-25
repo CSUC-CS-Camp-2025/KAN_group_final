@@ -16,6 +16,8 @@ body {
 main {
     width: 60%;
     height: auto;
+    display: flex;
+    flex-direction: column;
 }
 
 main h1 {
@@ -38,12 +40,16 @@ main h1 {
     width: 100px;
     height: 100px;
     box-shadow: 10px 10px;
+    border-radius: 10px;
+
 }
 
 .selectedDie {
     width: 100px;
     height: 100px;
     box-shadow: 10px 10px;
+    border-radius: 10px;
+
 }
 
 #selected-dice {
@@ -68,6 +74,7 @@ main h1 {
     font-family: "Quattrocento", serif;
     font-weight: 400;
     font-style: normal;
+    width: 30%;
 }
 
 div [value='one'] {
@@ -118,7 +125,21 @@ div [value='six'] {
 }
 
 .label {
-  font-family: "Quattrocento", serif;
-  font-weight: 400;
-  font-style: normal;
+    font-family: "Quattrocento", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+[value='invisible'] {
+    opacity: 0;
+}
+
+[value='visible'] {
+    opacity: 1;
+}
+
+footer img {
+    width: 50px;
+    height: auto;
+    filter: ;
 }
