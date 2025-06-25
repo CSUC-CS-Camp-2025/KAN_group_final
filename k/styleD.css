@@ -1,0 +1,55 @@
+html
+{
+    background-color:rgb(118, 183, 220)
+}
+
+h1
+{
+    color:rgb(16, 90, 124);
+    font-family:impact;
+    text-align:center;
+    text-shadow: 2px 2px rgb(211, 237, 255);
+    background-color: rgb(80, 179, 209); width:1500px; height:100px; align-self: center; align-content:center;
+    border: 5px solid rgb(8, 67, 99);
+    border-radius: 120px;
+}
+
+h2
+{
+    color:rgb(35, 116, 170);
+    font-family:impact;
+    text-align:center;
+    text-shadow: 2px 2px rgb(186, 238, 255);
+    border-bottom: 5px dotted rgb(166, 228, 255);
+    padding-bottom:10px;
+    
+}
+
+
+
+p
+{
+    color:rgb(67, 219, 239);
+    font-family:impact;
+    text-align:center;
+    text-shadow: 2px 2px rgb(18, 67, 72);
+    background-color: rgb(163, 247, 255); width:600px; height:400px; align-self: center; align-content:center;
+    border: 6px dotted rgb(16, 94, 127);
+    border-radius: 20px;
+    font-size:40px;
+    box-shadow: 0 0 15px 5px #90e0ff;
+    
+}
+
+
+
+
+button
+{
+    font-family: impact;
+    color:rgb(39, 145, 211);
+    background-color: rgb(159, 218, 255);
+    border: 2px solid rgb(6, 60, 91);
+    text-align:center;
+    box-shadow: 0 0 15px 5px #b6deff;
+}
