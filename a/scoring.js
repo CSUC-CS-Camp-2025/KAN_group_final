@@ -416,6 +416,9 @@ function checkFullHouse() {
 
 function updateRoundDisplay() {
     roundDisplay.innerHTML = 'Round: ' + roundNumber + '/13';
+    if (roundNumber == 1) {
+        roundDisplay.setAttribute('value', 'visible');
+    }
 }
 
 function calculateScore() {
