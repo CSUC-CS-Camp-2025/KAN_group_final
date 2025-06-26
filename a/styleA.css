@@ -25,7 +25,7 @@ main h1 {
     font-family: "Caprasimo", serif;
     font-weight: 400;
     font-style: normal;
-    font-size: 60px;
+    font-size: 90px;
     margin: 25px 0px 25px;
 }
 
@@ -71,9 +71,8 @@ main h1 {
     padding: 10px 25px 10px 25px;
     margin: 10px 5px 10px;
     border-radius: 5px;
-    font-family: "Quattrocento", serif;
-    font-weight: 400;
-    font-style: normal;
+    font-family: "Caprasimo", serif;
+    letter-spacing: 5px;
     width: 30%;
 }
 
@@ -105,7 +104,8 @@ div [value='six'] {
     text-align: center;
     width: 20%;
     padding: 25px;
-    background-color: white;
+    background-color: var(--second);
+    color: var(--fourth);
 }
 
 #scoreboard h3 {
@@ -119,7 +119,7 @@ div [value='six'] {
 }
 
 #scoreboard-section div {
-    border: 1.5px solid black;
+    border: 1.5px solid var(--fourth);
     text-align: center;
     padding: 10px;
 }
