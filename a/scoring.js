@@ -25,6 +25,7 @@ fours = document.getElementById('fours');
 fives = document.getElementById('fives');
 sixes = document.getElementById('sixes');
 bonusElement = document.getElementById('bonus');
+yahtzeeElement = document.getElementById('yahtzee');
 chance = document.getElementById('chance');
 
 //updates Bonus score and sets the element contents
@@ -71,6 +72,13 @@ sixes.addEventListener('click', () => {
     sixes.innerHTML = checkSixes();
     updateBonus(checkSixes());
     roundNumber++;
+});
+
+yahtzeeElement.addEventListener('click', () => {
+    if (checkYahtzee()) {
+        yahtzeeElement.innerHTML = 50;
+    }
+    roundNumber++
 });
 
 chance.addEventListener('click', () => {
@@ -183,4 +191,19 @@ function checkChance() {
         }
     }
     return score;
+}
+
+function checkYahtzee() {
+    selectedDice = document.getElementsByClassName('selectedDie');
+    if (selectedDice.length != 5) {
+        return false;
+    }
+    for (let i = 0; i < selectedDice.length - 1; i++) {
+        value = selectedDice.item(i).getAttribute('value');
+        valueNext = selectedDice.item(i+1).getAttribute('value');
+        if (value != valueNext) {
+            return false;
+        }
+    }
+    return true;
 }
