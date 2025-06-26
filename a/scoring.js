@@ -27,10 +27,13 @@ sixes = document.getElementById('sixes');
 bonusElement = document.getElementById('bonus');
 threeKindElement = document.getElementById('3Kind');
 fourKindElement = document.getElementById('4Kind');
+fullHouseElement = document.getElementById('fullHouse');
 smStraightElement = document.getElementById('smStraight');
 lrgSraightElement = document.getElementById('lrgStraight');
 yahtzeeElement = document.getElementById('yahtzee');
 chance = document.getElementById('chance');
+totalScoreElement = document.getElementById('totalScore');
+roundDisplay = document.getElementById('round-display');
 
 //updates Bonus score and sets the element contents
 function updateBonus(num) {
@@ -46,46 +49,62 @@ aces.addEventListener('click', () => {
     aces.innerHTML = checkAces();
     updateBonus(checkAces());
     roundNumber++;
+    updateRoundDisplay();
 });
 
 twos.addEventListener('click', () => {
     twos.innerHTML = checkTwos();
     updateBonus(checkTwos());
     roundNumber++;
+    updateRoundDisplay();
 });
 
 threes.addEventListener('click', () => {
     threes.innerHTML = checkThrees();
     updateBonus(checkThrees());
     roundNumber++;
+    updateRoundDisplay();
 });
 
 fours.addEventListener('click', () => {
     fours.innerHTML = checkFours();
     updateBonus(checkFours());
     roundNumber++;
+    updateRoundDisplay();
 });
 
 fives.addEventListener('click', () => {
     fives.innerHTML = checkFives();
     updateBonus(checkFives());
     roundNumber++;
+    updateRoundDisplay();
 });
 
 sixes.addEventListener('click', () => {
     sixes.innerHTML = checkSixes();
     updateBonus(checkSixes());
     roundNumber++;
+    updateRoundDisplay();
 });
 
 threeKindElement.addEventListener('click', () => {
     threeKindElement.innerHTML = get3kindScore();
     roundNumber++;
+    updateRoundDisplay();
 });
 
 fourKindElement.addEventListener('click', () => {
     fourKindElement.innerHTML = get4kindScore();
     roundNumber++;
+    updateRoundDisplay();
+});
+
+fullHouseElement.addEventListener('click', () => {
+    if (checkFullHouse()) {
+        fullHouseElement.innerHTML = 25;
+    }
+    roundNumber++;
+    updateRoundDisplay();
 });
 
 smStraightElement.addEventListener('click', () => {
@@ -93,6 +112,7 @@ smStraightElement.addEventListener('click', () => {
         smStraightElement.innerHTML = 30;
     }
     roundNumber++;
+    updateRoundDisplay();
 });
 
 lrgSraightElement.addEventListener('click', () => {
@@ -100,6 +120,7 @@ lrgSraightElement.addEventListener('click', () => {
         lrgSraightElement.innerHTML = 40;
     }
     roundNumber++;
+    updateRoundDisplay();
 });
 
 yahtzeeElement.addEventListener('click', () => {
@@ -107,11 +128,13 @@ yahtzeeElement.addEventListener('click', () => {
         yahtzeeElement.innerHTML = 50;
     }
     roundNumber++
+    updateRoundDisplay();
 });
 
 chance.addEventListener('click', () => {
     chance.innerHTML = checkChance();
     roundNumber++;
+    updateRoundDisplay();
 });
 
 //checks the number of ones using the selectedDice HTMLCollection
@@ -323,7 +346,7 @@ function has3ofaKind() {
     // Check for exactly 3 occurrences
     for (let num in counts) {
         if (counts[num] === 3) {
-            return true; 
+            return true;
         } // returns true when there are 3 of the same number in dice[]
         else {
             return false;
@@ -364,5 +387,58 @@ function has4ofaKind() {
         else {
             return false;
         }
+    }
+}
+
+//checks for a full house and returns a bool
+function checkFullHouse() {
+    selectedDice = document.getElementsByClassName('selectedDie');
+    let dice = [];
+    if (selectedDice.length !== 5) {
+        return false;
+    } //returns false if there's not 5 dice
+    for (let i = 0; i < selectedDice.length; i++) {
+        dice.push(stringToNum(selectedDice.item(i).getAttribute('value')));
+    }
+
+    let counts = {};
+    for (let num of dice) {
+        counts[num] = (counts[num] || 0) + 1;
+    }
+    let hasThree = false;
+    let hasTwo = false;
+    for (let count of Object.values(counts)) {
+        if (count === 3) hasThree = true;
+        if (count === 2) hasTwo = true;
+    }
+    return hasThree && hasTwo; //returns true if dice[] has 3 of the same number and 2 of another number
+}
+
+function updateRoundDisplay() {
+    roundDisplay.innerHTML = 'Round: ' + roundNumber + '/13';
+}
+
+function calculateScore() {
+    let score = 0;
+    score += aces.innerHTML;
+    score += twos.innerHTML;
+    score += threes.innerHTML;
+    score += fours.innerHTML;
+    score += fives.innerHTML;
+    score += sixes.innerHTML;
+    score += bonusElement.innerHTML;
+    score += threeKindElement.innerHTML;
+    score += fourKindElement.innerHTML;
+    score += fullHouseElement.innerHTML;
+    score += smStraightElement.innerHTML;
+    score += lrgSraightElement.innerHTML;
+    score += yahtzeeElement.innerHTML;
+    score += chance.innerHTML;
+    return score;
+}
+
+function checkGameOver() {
+    if (roundNumber == 13) {
+        totalScoreElement.innerHTML = calculateScore();
     }
 }

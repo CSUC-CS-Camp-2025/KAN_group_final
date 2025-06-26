@@ -10,7 +10,7 @@ diceOnBoard = document.getElementsByClassName('dieOnBoard');
 selectedDice = document.getElementsByClassName('selectedDie');
 const boardDiceContainer = document.getElementById('dice-area');
 selectedDiceContainer = document.getElementById('selected-dice');
-roundDisplay = document.getElementsByClassName('round-marker');
+rollDisplay = document.getElementsByClassName('roll-marker');
 //Individual Dice
 boardOne = document.getElementById('boardOne');
 boardTwo = document.getElementById('boardTwo');
@@ -28,7 +28,7 @@ btn.addEventListener('click', () => {
     if (rollNumber >= 3) {
         clearGame();
         reInitBoardDice();
-        roundDisplay = document.getElementsByClassName('round-marker');
+        rollDisplay = document.getElementsByClassName('roll-marker');
         rollNumber = 0;
     } //clears game, resets rounds, and reinits all board dice
     diceOnBoard = document.getElementsByClassName('dieOnBoard'); //re-init the diceOnBoard
@@ -42,17 +42,17 @@ btn.addEventListener('click', () => {
     displayRound();
 });
 
-//resets the round dispay to all invisible
+//resets the roll dispay to all invisible
 function resetRoundDisplay() {
     for (let i = 0; i < 3; i++) {
-        roundDisplay.item(i).setAttribute('value', 'invisible');
+        rollDisplay.item(i).setAttribute('value', 'invisible');
     }
 }
 
-//sets the appropriate elements to visible to display round number
+//sets the appropriate elements to visible to display roll number
 function displayRound() {
     for (let i = 0; i < rollNumber; i ++) {
-        roundDisplay.item(i).setAttribute('value', 'visible');
+        rollDisplay.item(i).setAttribute('value', 'visible');
     }
 }
 

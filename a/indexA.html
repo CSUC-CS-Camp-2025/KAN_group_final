@@ -8,15 +8,17 @@
     <!-- Links for fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Quattrocento:wght@400;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Quattrocento:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
 </head>
 
 <body>
     <!--Header, Roll Button, and Board Dice Section -->
     <main>
-        <h1>Yahtzee</h1>
+        <header>
+            <h1>Yahtzee</h1>
+            <div id="round-display"></div>
+        </header>
         <div id="dice-area">
             <div id="boardOne" class="dieOnBoard"></div>
             <div id="boardTwo" class="dieOnBoard"></div>
@@ -26,6 +28,13 @@
         </div>
         <br>
         <button id="rollButton">Roll</button>
+
+        <!--Roll Display-->
+        <div id="roll-display">
+            <img src="images/red-x.png" class="roll-marker" value="invisible">
+            <img src="images/red-x.png" class="roll-marker" value="invisible">
+            <img src="images/red-x.png" class="roll-marker" value="invisible">
+        </div>
 
         <div id="help">
             <h2>How to Play</h2>
@@ -76,13 +85,6 @@
             </p>
 
         </div>
-
-        <!-- Round Display -->
-        <footer id="round-display">
-            <img src="images/red-x.png" class="round-marker" value="invisible">
-            <img src="images/red-x.png" class="round-marker" value="invisible">
-            <img src="images/red-x.png" class="round-marker" value="invisible">
-        </footer>
     </main>
 
     <!-- Selected Dice Section -->
@@ -133,6 +135,9 @@
             <div class="label">Chance</div>
             <div id="chance"></div>
         </div>
+        <br>
+        <h3 class="label">Total Score</h3>
+        <div id="totalScore"></div>
     </div>
 
     <script src="yahtzee.js" defer></script>
