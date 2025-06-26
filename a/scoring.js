@@ -1,7 +1,7 @@
 
 //Game Variables
 let roundNumber = 0;
-let bonus = -63;
+let bonus = -10; //-63
 
 //DOM elements
 selectedDice = document.getElementsByClassName('selectedDie');
@@ -32,9 +32,9 @@ function updateBonus(num) {
     bonus += num;
     if (bonus >= 0) {
         bonus = 35;
+        bonusElement.innerHTML = bonus;
         return;
     }
-    bonusElement.innerHTML = bonus;
 }
 
 aces.addEventListener('click', () => {
