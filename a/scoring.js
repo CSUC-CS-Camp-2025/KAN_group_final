@@ -25,6 +25,8 @@ fours = document.getElementById('fours');
 fives = document.getElementById('fives');
 sixes = document.getElementById('sixes');
 bonusElement = document.getElementById('bonus');
+smStraightElement = document.getElementById('smStraight');
+lrgSraightElement = document.getElementById('lrgStraight');
 yahtzeeElement = document.getElementById('yahtzee');
 chance = document.getElementById('chance');
 
@@ -71,6 +73,20 @@ fives.addEventListener('click', () => {
 sixes.addEventListener('click', () => {
     sixes.innerHTML = checkSixes();
     updateBonus(checkSixes());
+    roundNumber++;
+});
+
+smStraightElement.addEventListener('click', () => {
+    if (checkSmStraight()) {
+        smStraightElement.innerHTML = 30;
+    }
+    roundNumber++;
+});
+
+lrgSraightElement.addEventListener('click', () => {
+    if (checkLrgStraight()) {
+        lrgSraightElement.innerHTML = 40;
+    }
     roundNumber++;
 });
 
@@ -193,17 +209,103 @@ function checkChance() {
     return score;
 }
 
+// checks for Yahtzee by iterating through selectedDice and comparing value with nextValue
 function checkYahtzee() {
     selectedDice = document.getElementsByClassName('selectedDie');
     if (selectedDice.length != 5) {
         return false;
-    }
+    } //returns false if there's not 5 dice
     for (let i = 0; i < selectedDice.length - 1; i++) {
-        value = selectedDice.item(i).getAttribute('value');
-        valueNext = selectedDice.item(i+1).getAttribute('value');
+        value = selectedDice.item(i).getAttribute('value'); //current die value
+        valueNext = selectedDice.item(i + 1).getAttribute('value'); //next die value
         if (value != valueNext) {
             return false;
-        }
+        } //returns false if current value isnt the same as the next
     }
     return true;
 }
+
+// converts a number to the equivalent string with the 1st letter capitalized
+function stringToNum(string) {
+    switch (string) {
+        case 'one':
+            return 1;
+        case 'two':
+            return 2;
+        case 'three':
+            return 3;
+        case 'four':
+            return 4;
+        case 'five':
+            return 5;
+    }
+}
+
+// checks for large straight by populating a dice[] with values, then checking for cases
+function checkLrgStraight() {
+    selectedDice = document.getElementsByClassName('selectedDie');
+    let dice = [];
+    for (let i = 0; i < selectedDice.length; i++) {
+        dice.push(stringToNum(selectedDice.item(i).getAttribute('value')));
+    }
+    if (dice.includes(1) && dice.includes(2) && dice.includes(3) && dice.includes(4) && dice.includes(5)) {
+        return true;
+    } // returns true if dice has 1, 2, 3, 4, 5
+    else if (dice.includes(2) && dice.includes(3) && dice.includes(4) && dice.includes(5) && dice.includes(6)) {
+        return true;
+    } // returns true if dice has 2, 3, 4, 5, 6
+    else {
+        return false;
+    }
+    
+}
+
+// checks for small straight by populating a dice[] with values, then checking for cases
+function checkSmStraight() {
+    selectedDice = document.getElementsByClassName('selectedDie');
+    let dice = [];
+    for (let i = 0; i < selectedDice.length; i++) {
+        dice.push(stringToNum(selectedDice.item(i).getAttribute('value')));
+    }
+    if (dice.includes(1) && dice.includes(2) && dice.includes(3) && dice.includes(4)) {
+        return true;
+    } // returns true if dice has 1, 2, 3, 4
+    else if (dice.includes(2) && dice.includes(3) && dice.includes(4) && dice.includes(5)) {
+        return true;
+    } // returns true if dice has 2, 3, 4, 5
+    else if (dice.includes(3) && dice.includes(4) && dice.includes(5) && dice.includes(6)) {
+        return true;
+    } // returns true if dice has 3, 4, 5, 6
+    else {
+        return false;
+    }
+    
+}
+
+/*
+function checkLrgStraight() {
+    selectedDice = document.getElementsByClassName('selectedDie');
+    switch (selectedDice.item(i).getAttribute('value')) {
+        case 'one':
+            for (let i = 0; i < selectedDice.length - 1; i++) {
+                value = selectedDice.item(i).getAttribute('value');
+                nextValue = selectedDice.item(i + 1).getAttribute('value');
+                if (stringToNum(value) != (1 + stringToNum(valueNext))) {
+                    return false;
+                }
+            }
+            return true;
+            break;
+        case 'two':
+            for (let i = 0; i < selectedDice.length - 1; i++) {
+                value = selectedDice.item(i).getAttribute('value');
+                nextValue = selectedDice.item(i + 1).getAttribute('value');
+                if (stringToNum(value) != (1 + stringToNum(valueNext))) {
+                    return false;
+                }
+            }
+            return true;
+            break;
+    }
+} 
+    */
