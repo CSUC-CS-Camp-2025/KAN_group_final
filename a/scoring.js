@@ -25,6 +25,8 @@ fours = document.getElementById('fours');
 fives = document.getElementById('fives');
 sixes = document.getElementById('sixes');
 bonusElement = document.getElementById('bonus');
+threeKindElement = document.getElementById('3Kind');
+fourKindElement = document.getElementById('4Kind');
 smStraightElement = document.getElementById('smStraight');
 lrgSraightElement = document.getElementById('lrgStraight');
 yahtzeeElement = document.getElementById('yahtzee');
@@ -73,6 +75,16 @@ fives.addEventListener('click', () => {
 sixes.addEventListener('click', () => {
     sixes.innerHTML = checkSixes();
     updateBonus(checkSixes());
+    roundNumber++;
+});
+
+threeKindElement.addEventListener('click', () => {
+    threeKindElement.innerHTML = get3kindScore();
+    roundNumber++;
+});
+
+fourKindElement.addEventListener('click', () => {
+    fourKindElement.innerHTML = get4kindScore();
     roundNumber++;
 });
 
@@ -257,7 +269,6 @@ function checkLrgStraight() {
     else {
         return false;
     }
-    
 }
 
 // checks for small straight by populating a dice[] with values, then checking for cases
@@ -279,33 +290,79 @@ function checkSmStraight() {
     else {
         return false;
     }
-    
+
 }
 
-/*
-function checkLrgStraight() {
+//returns 3 of a kind score
+function get3kindScore() {
+    let score = 0;
     selectedDice = document.getElementsByClassName('selectedDie');
-    switch (selectedDice.item(i).getAttribute('value')) {
-        case 'one':
-            for (let i = 0; i < selectedDice.length - 1; i++) {
-                value = selectedDice.item(i).getAttribute('value');
-                nextValue = selectedDice.item(i + 1).getAttribute('value');
-                if (stringToNum(value) != (1 + stringToNum(valueNext))) {
-                    return false;
-                }
-            }
-            return true;
-            break;
-        case 'two':
-            for (let i = 0; i < selectedDice.length - 1; i++) {
-                value = selectedDice.item(i).getAttribute('value');
-                nextValue = selectedDice.item(i + 1).getAttribute('value');
-                if (stringToNum(value) != (1 + stringToNum(valueNext))) {
-                    return false;
-                }
-            }
-            return true;
-            break;
+    let dice = [];
+    for (let i = 0; i < selectedDice.length; i++) {
+        dice.push(stringToNum(selectedDice.item(i).getAttribute('value')));
     }
-} 
-    */
+    if (has3ofaKind()) {
+        for (let i = 0; i < dice.length; i++) {
+            score += dice[i];
+        }
+    }
+    return score;
+}
+
+//checks if there is a 3 of a kind using dice[]
+function has3ofaKind() {
+    selectedDice = document.getElementsByClassName('selectedDie');
+    let dice = [];
+    for (let i = 0; i < selectedDice.length; i++) {
+        dice.push(stringToNum(selectedDice.item(i).getAttribute('value')));
+    }
+    counts = {};
+    for (let num of dice) {
+        counts[num] = (counts[num] || 0) + 1;
+    }
+    // Check for exactly 3 occurrences
+    for (let num in counts) {
+        if (counts[num] === 3) {
+            return true; 
+        } // returns true when there are 3 of the same number in dice[]
+        else {
+            return false;
+        }
+    }
+}
+
+function get4kindScore() {
+    let score = 0;
+    selectedDice = document.getElementsByClassName('selectedDie');
+    let dice = [];
+    for (let i = 0; i < selectedDice.length; i++) {
+        dice.push(stringToNum(selectedDice.item(i).getAttribute('value')));
+    }
+    if (has4ofaKind()) {
+        for (let i = 0; i < dice.length; i++) {
+            score += dice[i];
+        }
+    }
+    return score;
+}
+
+function has4ofaKind() {
+    selectedDice = document.getElementsByClassName('selectedDie');
+    let dice = [];
+    for (let i = 0; i < selectedDice.length; i++) {
+        dice.push(stringToNum(selectedDice.item(i).getAttribute('value')));
+    }
+    counts = {};
+    for (let num of dice) {
+        counts[num] = (counts[num] || 0) + 1;
+    }
+    // Check for exactly 4 occurrences
+    for (let num in counts) {
+        if (counts[num] === 4) {
+            return true;
+        } // returns true when there are 4 of the same number in dice[]
+        else {
+            return false;
+        }
+    }
+}
