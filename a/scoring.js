@@ -1,7 +1,7 @@
 
 //Game Variables
 let roundNumber = 0;
-let bonus = -10; //-63
+let bonus = -63; //-63
 
 //DOM elements
 selectedDice = document.getElementsByClassName('selectedDie');
@@ -43,6 +43,7 @@ function updateBonus(num) {
         bonusElement.innerHTML = bonus;
         return;
     }
+    bonusElement.innerHTML = bonus;
 }
 
 aces.addEventListener('click', () => {
@@ -50,6 +51,7 @@ aces.addEventListener('click', () => {
     updateBonus(checkAces());
     roundNumber++;
     updateRoundDisplay();
+    checkGameOver();
 });
 
 twos.addEventListener('click', () => {
@@ -57,6 +59,7 @@ twos.addEventListener('click', () => {
     updateBonus(checkTwos());
     roundNumber++;
     updateRoundDisplay();
+    checkGameOver();
 });
 
 threes.addEventListener('click', () => {
@@ -64,6 +67,7 @@ threes.addEventListener('click', () => {
     updateBonus(checkThrees());
     roundNumber++;
     updateRoundDisplay();
+    checkGameOver();
 });
 
 fours.addEventListener('click', () => {
@@ -71,6 +75,7 @@ fours.addEventListener('click', () => {
     updateBonus(checkFours());
     roundNumber++;
     updateRoundDisplay();
+    checkGameOver();
 });
 
 fives.addEventListener('click', () => {
@@ -78,6 +83,7 @@ fives.addEventListener('click', () => {
     updateBonus(checkFives());
     roundNumber++;
     updateRoundDisplay();
+    checkGameOver();
 });
 
 sixes.addEventListener('click', () => {
@@ -85,56 +91,76 @@ sixes.addEventListener('click', () => {
     updateBonus(checkSixes());
     roundNumber++;
     updateRoundDisplay();
+    checkGameOver();
 });
 
 threeKindElement.addEventListener('click', () => {
     threeKindElement.innerHTML = get3kindScore();
     roundNumber++;
     updateRoundDisplay();
+    checkGameOver();
 });
 
 fourKindElement.addEventListener('click', () => {
     fourKindElement.innerHTML = get4kindScore();
     roundNumber++;
     updateRoundDisplay();
+    checkGameOver();
 });
 
 fullHouseElement.addEventListener('click', () => {
     if (checkFullHouse()) {
         fullHouseElement.innerHTML = 25;
     }
+    else {
+        fullHouseElement.innerHTML = 0;
+    }
     roundNumber++;
     updateRoundDisplay();
+    checkGameOver();
 });
 
 smStraightElement.addEventListener('click', () => {
     if (checkSmStraight()) {
         smStraightElement.innerHTML = 30;
     }
+    else {
+        smStraightElement.innerHTML = 0;
+    }
     roundNumber++;
     updateRoundDisplay();
+    checkGameOver();
 });
 
 lrgSraightElement.addEventListener('click', () => {
     if (checkLrgStraight()) {
         lrgSraightElement.innerHTML = 40;
     }
+    else {
+        lrgSraightElement.innerHTML = 0;
+    }
     roundNumber++;
     updateRoundDisplay();
+    checkGameOver();
 });
 
 yahtzeeElement.addEventListener('click', () => {
     if (checkYahtzee()) {
         yahtzeeElement.innerHTML = 50;
     }
+    else {
+        yahtzeeElement.innerHTML = 0;
+    }
     roundNumber++
     updateRoundDisplay();
+    checkGameOver();
 });
 
 chance.addEventListener('click', () => {
     chance.innerHTML = checkChance();
     roundNumber++;
     updateRoundDisplay();
+    checkGameOver();
 });
 
 //checks the number of ones using the selectedDice HTMLCollection
@@ -423,20 +449,23 @@ function updateRoundDisplay() {
 
 function calculateScore() {
     let score = 0;
-    score += aces.innerHTML;
-    score += twos.innerHTML;
-    score += threes.innerHTML;
-    score += fours.innerHTML;
-    score += fives.innerHTML;
-    score += sixes.innerHTML;
-    score += bonusElement.innerHTML;
-    score += threeKindElement.innerHTML;
-    score += fourKindElement.innerHTML;
-    score += fullHouseElement.innerHTML;
-    score += smStraightElement.innerHTML;
-    score += lrgSraightElement.innerHTML;
-    score += yahtzeeElement.innerHTML;
-    score += chance.innerHTML;
+    score += Number(aces.innerHTML);
+    score += Number(twos.innerHTML);
+    score += Number(threes.innerHTML);
+    score += Number(fours.innerHTML);
+    score += Number(fives.innerHTML);
+    score += Number(sixes.innerHTML);
+    if (Number(bonusElement.innerHTML) > 0) {
+        score += Number(bonusElement.innerHTML);
+    } // assures if bonus is negative it doesn't add to your score
+    score += Number(threeKindElement.innerHTML);
+    score += Number(fourKindElement.innerHTML);
+    score += Number(fullHouseElement.innerHTML);
+    score += Number(smStraightElement.innerHTML);
+    score += Number(lrgSraightElement.innerHTML);
+    score += Number(yahtzeeElement.innerHTML);
+    score += Number(chance.innerHTML);
+    console.log(score);
     return score;
 }
 
