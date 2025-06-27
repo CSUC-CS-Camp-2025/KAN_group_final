@@ -336,45 +336,61 @@ function stringToNum(string) {
     }
 }
 
-// checks for large straight by populating a dice[] with values, then checking for cases
 function checkLrgStraight() {
     selectedDice = document.getElementsByClassName('selectedDie');
-    let dice = [];
+    const diceSet = new Set();
+
     for (let i = 0; i < selectedDice.length; i++) {
-        dice.push(stringToNum(selectedDice.item(i).getAttribute('value')));
+        let val = selectedDice.item(i).getAttribute('value');
+        let num = stringToNum(val);
+        if (num) diceSet.add(num);
     }
-    if (dice.includes(1) && dice.includes(2) && dice.includes(3) && dice.includes(4) && dice.includes(5)) {
-        return true;
-    } // returns true if dice has 1, 2, 3, 4, 5
-    else if (dice.includes(2) && dice.includes(3) && dice.includes(4) && dice.includes(5) && dice.includes(6)) {
-        return true;
-    } // returns true if dice has 2, 3, 4, 5, 6
-    else {
-        return false;
+
+    const sortedUnique = [...diceSet].sort((a, b) => a - b);
+
+    // A large straight requires exactly 5 unique, consecutive numbers
+    if (sortedUnique.length < 5) return false;
+
+    for (let i = 0; i <= sortedUnique.length - 5; i++) {
+        let isStraight = true;
+        for (let j = 1; j < 5; j++) {
+            if (sortedUnique[i + j] !== sortedUnique[i] + j) {
+                isStraight = false;
+                break;
+            }
+        }
+        if (isStraight) return true;
     }
+
+    return false;
 }
 
-// checks for small straight by populating a dice[] with values, then checking for cases
+
 function checkSmStraight() {
     selectedDice = document.getElementsByClassName('selectedDie');
-    let dice = [];
+    const diceSet = new Set();
+
     for (let i = 0; i < selectedDice.length; i++) {
-        dice.push(stringToNum(selectedDice.item(i).getAttribute('value')));
-    }
-    if (dice.includes(1) && dice.includes(2) && dice.includes(3) && dice.includes(4)) {
-        return true;
-    } // returns true if dice has 1, 2, 3, 4
-    else if (dice.includes(2) && dice.includes(3) && dice.includes(4) && dice.includes(5)) {
-        return true;
-    } // returns true if dice has 2, 3, 4, 5
-    else if (dice.includes(3) && dice.includes(4) && dice.includes(5) && dice.includes(6)) {
-        return true;
-    } // returns true if dice has 3, 4, 5, 6
-    else {
-        return false;
+        let val = selectedDice.item(i).getAttribute('value');
+        let num = stringToNum(val);
+        if (num) diceSet.add(num); //if num != null then adds it to diceSet()
     }
 
+    const sortedUnique = [...diceSet].sort((a, b) => a - b); //sorts the diceSet
+    let consecutive = 0;
+
+    for (let i = 0; i < sortedUnique.length; i++) {
+        if (i > 0 && sortedUnique[i] === sortedUnique[i - 1] + 1) {
+            consecutive++;
+            if (consecutive >= 3) return true; // found 4 in a row
+        } else {
+            consecutive = 0;
+        }
+    }
+
+    return false;
 }
+
 
 //returns 3 of a kind score
 function get3kindScore() {
@@ -502,7 +518,6 @@ function calculateScore() {
     score += Number(lrgSraightElement.innerHTML);
     score += Number(yahtzeeElement.innerHTML);
     score += Number(chance.innerHTML);
-    console.log(score);
     return score;
 }
 
