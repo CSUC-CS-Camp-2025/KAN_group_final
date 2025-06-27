@@ -1,8 +1,12 @@
+/* FILE DESCRIPTION
+    yahtzee.js handles dice and creates and destroys dice elements in the html file. It also
+    provides most of the core game functions like rolling the dice, drawing the dice, etc.
+*/
 
 //Game Variables
 const numDice = 5;
 let dice = [];
-let roundNumber = 0;
+let rollNumber = 0;
 
 //DOM elements
 const btn = document.getElementById('rollButton');
@@ -10,7 +14,7 @@ diceOnBoard = document.getElementsByClassName('dieOnBoard');
 selectedDice = document.getElementsByClassName('selectedDie');
 const boardDiceContainer = document.getElementById('dice-area');
 selectedDiceContainer = document.getElementById('selected-dice');
-roundDisplay = document.getElementsByClassName('round-marker');
+rollDisplay = document.getElementsByClassName('roll-marker');
 //Individual Dice
 boardOne = document.getElementById('boardOne');
 boardTwo = document.getElementById('boardTwo');
@@ -25,15 +29,15 @@ selectedFive = document.getElementById('selectedFive');
 
 
 btn.addEventListener('click', () => {
-    if (roundNumber >= 3) {
+    if (rollNumber >= 3) {
         clearGame();
         reInitBoardDice();
-        roundDisplay = document.getElementsByClassName('round-marker');
-        roundNumber = 0;
+        rollDisplay = document.getElementsByClassName('roll-marker');
+        rollNumber = 0;
     } //clears game, resets rounds, and reinits all board dice
     diceOnBoard = document.getElementsByClassName('dieOnBoard'); //re-init the diceOnBoard
     dice = []; //clears dice before rolling
-    if (roundNumber == 0) {
+    if (rollNumber == 0) {
         setELs();
         resetRoundDisplay();
     } //sets Event Listeners only at start and wehn game resets
@@ -42,17 +46,17 @@ btn.addEventListener('click', () => {
     displayRound();
 });
 
-//resets the round dispay to all invisible
+//resets the roll dispay to all invisible
 function resetRoundDisplay() {
     for (let i = 0; i < 3; i++) {
-        roundDisplay.item(i).setAttribute('value', 'invisible');
+        rollDisplay.item(i).setAttribute('value', 'invisible');
     }
 }
 
-//sets the appropriate elements to visible to display round number
+//sets the appropriate elements to visible to display roll number
 function displayRound() {
-    for (let i = 0; i < roundNumber; i ++) {
-        roundDisplay.item(i).setAttribute('value', 'visible');
+    for (let i = 0; i < rollNumber; i ++) {
+        rollDisplay.item(i).setAttribute('value', 'visible');
     }
 }
 
@@ -66,7 +70,7 @@ function rollDice() {
     for (let i = 0; i < diceOnBoard.length; i++) {
         dice.push(randomizeDie());
     }
-    roundNumber++;
+    rollNumber++;
 }
 
 //returns dice[]
@@ -236,5 +240,6 @@ function clearGame() {
     if (selectedFive != null) {
         selectedFive.remove();
     }
+    clicked = false; //resets clicked variable for scoring.js
 }
 

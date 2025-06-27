@@ -4,6 +4,7 @@ body {
     gap: 50px;
     background-color: var(--first);
     margin: 25px;
+    height: fit-content;
 }
 
 :root {
@@ -13,6 +14,37 @@ body {
     --fourth: #FFE1E0;
 }
 
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#roll-display {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 7px;
+}
+
+#roll-display img {
+    width: 35px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 3px 3px;
+}
+
+#round-display {
+    color: var(--fourth);
+    font-family: "Quattrocento", serif;
+    align-self: center;
+    font-size: 25px;
+    padding: 15px;
+    background-color: var(--second);
+    border-radius: 10px;
+}
+
 main {
     width: 60%;
     height: auto;
@@ -20,19 +52,22 @@ main {
     flex-direction: column;
 }
 
-main h1 {
+header h1 {
     color: var(--fourth);
     font-family: "Caprasimo", serif;
     font-weight: 400;
     font-style: normal;
-    font-size: 60px;
+    font-size: 90px;
     margin: 25px 0px 25px;
+    padding: 8px 20px;
+    background-color: var(--second);
+    border-radius: 10px;
 }
 
 #dice-area {
     display: flex;
     flex-direction: row;
-    gap: 10px;
+    gap: 20px;
     flex-wrap: wrap;
 }
 
@@ -41,7 +76,12 @@ main h1 {
     height: 100px;
     box-shadow: 10px 10px;
     border-radius: 10px;
+    transition: all .2s ease-in-out; 
+}
 
+.dieOnBoard:hover { 
+    cursor: pointer;
+    transform: scale(1.1); 
 }
 
 .selectedDie {
@@ -49,7 +89,12 @@ main h1 {
     height: 100px;
     box-shadow: 10px 10px;
     border-radius: 10px;
+    transition: all .2s ease-in-out; 
+}
 
+.selectedDie:hover { 
+    cursor: pointer;
+    transform: scale(1.1); 
 }
 
 #selected-dice {
@@ -58,7 +103,19 @@ main h1 {
     align-items: center;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 20px;
+}
+
+#help {
+    height: 30%;
+    overflow: scroll;
+    overflow-x: hidden;
+    font-family: "Quattrocento", serif;
+    color: var(--fourth);
+    background-color: var(--second);
+    border-radius: 10px;
+    padding: 25px;
+    margin-top: 20px;
 }
 
 #rollButton {
@@ -71,9 +128,8 @@ main h1 {
     padding: 10px 25px 10px 25px;
     margin: 10px 5px 10px;
     border-radius: 5px;
-    font-family: "Quattrocento", serif;
-    font-weight: 400;
-    font-style: normal;
+    font-family: "Caprasimo", serif;
+    letter-spacing: 5px;
     width: 30%;
 }
 
@@ -104,8 +160,10 @@ div [value='six'] {
 #scoreboard {
     text-align: center;
     width: 20%;
+    height: fit-content;
     padding: 25px;
-    background-color: white;
+    background-color: var(--second);
+    color: var(--fourth);
 }
 
 #scoreboard h3 {
@@ -119,7 +177,7 @@ div [value='six'] {
 }
 
 #scoreboard-section div {
-    border: 1.5px solid black;
+    border: 1.5px solid var(--fourth);
     text-align: center;
     padding: 10px;
 }
@@ -136,10 +194,4 @@ div [value='six'] {
 
 [value='visible'] {
     opacity: 1;
-}
-
-footer img {
-    width: 50px;
-    height: auto;
-    filter: ;
 }
