@@ -1,3 +1,7 @@
+/* FILE DESCRIPTION
+    yahtzee.js handles dice and creates and destroys dice elements in the html file. It also
+    provides most of the core game functions like rolling the dice, drawing the dice, etc.
+*/
 
 //Game Variables
 const numDice = 5;
@@ -236,5 +240,6 @@ function clearGame() {
     if (selectedFive != null) {
         selectedFive.remove();
     }
+    clicked = false; //resets clicked variable for scoring.js
 }
 

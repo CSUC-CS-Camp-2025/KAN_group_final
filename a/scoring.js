@@ -1,22 +1,16 @@
+/* FILE DESCRIPTION
+    scoring.js handles the scoring of the game and mostly provides functions
+    that check dice values and sets the score accordingly. It also keeps track
+    of the roundNumber and ends the game accordingly
+*/
 
 //Game Variables
 let roundNumber = 0;
-let bonus = -63; //-63
+let bonus = -63;
+let clicked = false;
 
 //DOM elements
 selectedDice = document.getElementsByClassName('selectedDie');
-selectedDiceContainer = document.getElementById('selected-dice');
-//Individual Dice
-boardOne = document.getElementById('boardOne');
-boardTwo = document.getElementById('boardTwo');
-boardThree = document.getElementById('boardThree');
-boardFour = document.getElementById('boardFour');
-boardFive = document.getElementById('boardFive');
-selectedOne = document.getElementById('selectedOne');
-selectedTwo = document.getElementById('selectedTwo');
-selectedThree = document.getElementById('selectedThree');
-selectedFour = document.getElementById('selectedFour');
-selectedFive = document.getElementById('selectedFive');
 //Score Catgeory Elements
 aces = document.getElementById('aces');
 twos = document.getElementById('twos');
@@ -32,6 +26,7 @@ smStraightElement = document.getElementById('smStraight');
 lrgSraightElement = document.getElementById('lrgStraight');
 yahtzeeElement = document.getElementById('yahtzee');
 chance = document.getElementById('chance');
+// Total Score Box
 totalScoreElement = document.getElementById('totalScore');
 roundDisplay = document.getElementById('round-display');
 
@@ -41,126 +36,165 @@ function updateBonus(num) {
     if (bonus >= 0) {
         bonus = 35;
         bonusElement.innerHTML = bonus;
-        return;
+        return; //sets bonus equal to 35 then returns if you reach >= 0
     }
     bonusElement.innerHTML = bonus;
 }
 
 aces.addEventListener('click', () => {
-    aces.innerHTML = checkAces();
-    updateBonus(checkAces());
-    roundNumber++;
-    updateRoundDisplay();
-    checkGameOver();
+    if (!clicked) {
+        aces.innerHTML = checkAces();
+        updateBonus(checkAces());
+        roundNumber++;
+        updateRoundDisplay();
+        checkGameOver();
+        clicked = true;
+    }
 });
 
 twos.addEventListener('click', () => {
-    twos.innerHTML = checkTwos();
-    updateBonus(checkTwos());
-    roundNumber++;
-    updateRoundDisplay();
-    checkGameOver();
+    if (!clicked) {
+        twos.innerHTML = checkTwos();
+        updateBonus(checkTwos());
+        roundNumber++;
+        updateRoundDisplay();
+        checkGameOver();
+        clicked = true;
+    }
 });
 
 threes.addEventListener('click', () => {
-    threes.innerHTML = checkThrees();
-    updateBonus(checkThrees());
-    roundNumber++;
-    updateRoundDisplay();
-    checkGameOver();
+    if (!clicked) {
+        threes.innerHTML = checkThrees();
+        updateBonus(checkThrees());
+        roundNumber++;
+        updateRoundDisplay();
+        checkGameOver();
+        clicked = true;
+    }
 });
 
 fours.addEventListener('click', () => {
-    fours.innerHTML = checkFours();
-    updateBonus(checkFours());
-    roundNumber++;
-    updateRoundDisplay();
-    checkGameOver();
+    if (!clicked) {
+        fours.innerHTML = checkFours();
+        updateBonus(checkFours());
+        roundNumber++;
+        updateRoundDisplay();
+        checkGameOver();
+        clicked = true;
+    }
 });
 
 fives.addEventListener('click', () => {
-    fives.innerHTML = checkFives();
-    updateBonus(checkFives());
-    roundNumber++;
-    updateRoundDisplay();
-    checkGameOver();
+    if (!clicked) {
+        fives.innerHTML = checkFives();
+        updateBonus(checkFives());
+        roundNumber++;
+        updateRoundDisplay();
+        checkGameOver();
+        clicked = true;
+    }
 });
 
 sixes.addEventListener('click', () => {
-    sixes.innerHTML = checkSixes();
-    updateBonus(checkSixes());
-    roundNumber++;
-    updateRoundDisplay();
-    checkGameOver();
+    if (!clicked) {
+        sixes.innerHTML = checkSixes();
+        updateBonus(checkSixes());
+        roundNumber++;
+        updateRoundDisplay();
+        checkGameOver();
+        clicked = true;
+    }
 });
 
 threeKindElement.addEventListener('click', () => {
-    threeKindElement.innerHTML = get3kindScore();
-    roundNumber++;
-    updateRoundDisplay();
-    checkGameOver();
+    if (!clicked) {
+        threeKindElement.innerHTML = get3kindScore();
+        roundNumber++;
+        updateRoundDisplay();
+        checkGameOver();
+        clicked = true;
+    }
 });
 
 fourKindElement.addEventListener('click', () => {
-    fourKindElement.innerHTML = get4kindScore();
-    roundNumber++;
-    updateRoundDisplay();
-    checkGameOver();
+    if (!clicked) {
+        fourKindElement.innerHTML = get4kindScore();
+        roundNumber++;
+        updateRoundDisplay();
+        checkGameOver();
+        clicked = true;
+    }
 });
 
 fullHouseElement.addEventListener('click', () => {
-    if (checkFullHouse()) {
-        fullHouseElement.innerHTML = 25;
+    if (!clicked) {
+        if (checkFullHouse()) {
+            fullHouseElement.innerHTML = 25;
+        }
+        else {
+            fullHouseElement.innerHTML = 0;
+        }
+        roundNumber++;
+        updateRoundDisplay();
+        checkGameOver();
+        clicked = true;
     }
-    else {
-        fullHouseElement.innerHTML = 0;
-    }
-    roundNumber++;
-    updateRoundDisplay();
-    checkGameOver();
 });
 
 smStraightElement.addEventListener('click', () => {
-    if (checkSmStraight()) {
-        smStraightElement.innerHTML = 30;
+    if (!clicked) {
+        if (checkSmStraight()) {
+            smStraightElement.innerHTML = 30;
+        }
+        else {
+            smStraightElement.innerHTML = 0;
+        }
+        roundNumber++;
+        updateRoundDisplay();
+        checkGameOver();
+        clicked = true;
     }
-    else {
-        smStraightElement.innerHTML = 0;
-    }
-    roundNumber++;
-    updateRoundDisplay();
-    checkGameOver();
 });
 
 lrgSraightElement.addEventListener('click', () => {
-    if (checkLrgStraight()) {
-        lrgSraightElement.innerHTML = 40;
+    if (!clicked) {
+        if (checkLrgStraight()) {
+            lrgSraightElement.innerHTML = 40;
+        }
+        else {
+            lrgSraightElement.innerHTML = 0;
+        }
+        roundNumber++;
+        updateRoundDisplay();
+        checkGameOver();
+        clicked = true;
     }
-    else {
-        lrgSraightElement.innerHTML = 0;
-    }
-    roundNumber++;
-    updateRoundDisplay();
-    checkGameOver();
 });
 
 yahtzeeElement.addEventListener('click', () => {
-    if (checkYahtzee()) {
-        yahtzeeElement.innerHTML = 50;
+    if (!clicked) {
+        if (checkYahtzee()) {
+            yahtzeeElement.innerHTML = 50;
+        }
+        else {
+            yahtzeeElement.innerHTML = 0;
+        }
+        roundNumber++
+        updateRoundDisplay();
+        checkGameOver();
+        clicked = true;
     }
-    else {
-        yahtzeeElement.innerHTML = 0;
-    }
-    roundNumber++
-    updateRoundDisplay();
-    checkGameOver();
 });
 
 chance.addEventListener('click', () => {
-    chance.innerHTML = checkChance();
-    roundNumber++;
-    updateRoundDisplay();
-    checkGameOver();
+    if (!clicked) {
+        chance.innerHTML = checkChance();
+        roundNumber++;
+        updateRoundDisplay();
+        checkGameOver();
+        clicked = true;
+    }
 });
 
 //checks the number of ones using the selectedDice HTMLCollection
@@ -444,6 +478,9 @@ function updateRoundDisplay() {
     roundDisplay.innerHTML = 'Round: ' + roundNumber + '/13';
     if (roundNumber == 1) {
         roundDisplay.setAttribute('value', 'visible');
+    }
+    if (roundNumber == 13) {
+        roundDisplay.innerHTML = 'Game Over!';
     }
 }
 
