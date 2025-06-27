@@ -1,19 +1,14 @@
 let isThick = false;
 let colorPicker, bgColorPicker;
-let clearButton, thicknessButton, saveButton, undoButton, imgInput;
+let clearButton, thicknessButton, saveButton, undoButton, imgInput, galleryButton;
 let uploadedImage = null;
-
 let strokes = [];
 let undoneStrokes = [];
 let currentStroke = [];
+let uploadedImages = [];
 
 function setup() {
   const container = createDiv().id("container");
-  container.style("display", "flex");
-  container.style("flexDirection", "column");
-  container.style("alignItems", "center");
-  container.style("gap", "10px");
-  container.style("width", "850px");
   container.parent("canvasContainer");
 
   const canvasContainer = createDiv().id("canvasWrap").parent(container);
@@ -24,30 +19,36 @@ function setup() {
 
   colorPicker = createColorPicker("#000000").parent(toolbar);
 
-  thicknessButton = createButton("Thick Stroke");
-  thicknessButton.mousePressed(toggleThickness).parent(toolbar);
+  thicknessButton = createButton("Thick Stroke").parent(toolbar);
+  thicknessButton.mousePressed(toggleThickness);
 
-  clearButton = createButton("Clear");
-  clearButton.mousePressed(clearCanvas).parent(toolbar);
+  clearButton = createButton("Clear").parent(toolbar);
+  clearButton.mousePressed(clearCanvas);
 
-  undoButton = createButton("Undo");
-  undoButton.mousePressed(undoStroke).parent(toolbar);
+  undoButton = createButton("Undo").parent(toolbar);
+  undoButton.mousePressed(undoStroke);
 
-  saveButton = createButton("Save");
-  saveButton.mousePressed(saveDrawing).parent(toolbar);
+  saveButton = createButton("Save").parent(toolbar);
+  saveButton.mousePressed(saveDrawing);
 
   bgColorPicker = createColorPicker("#ffffff").parent(toolbar);
 
   imgInput = createFileInput(handleImageUpload);
+  imgInput.elt.multiple = true;
   imgInput.parent(toolbar);
 
-  hiddenPageButton = createButton("🦆").parent(toolbar).mousePressed(() => {
+  galleryButton = createButton("Creator's Gallery").parent(toolbar);
+  galleryButton.mousePressed(toggleGallery);
+
+  createButton("🦆").parent(toolbar).mousePressed(() => {
     window.location.href = "indexN2.html";
   });
 
-  normalButton = createButton("🥚").parent(toolbar).mousePressed(() => {
+  createButton("🥚").parent(toolbar).mousePressed(() => {
     window.location.href = "indexN3.html";
   });
+
+  setupGallerySidebar();
 }
 
 function draw() {
@@ -122,7 +123,41 @@ function handleImageUpload(file) {
       strokes = [];
       undoneStrokes = [];
     });
+
+    uploadedImages.push(file.data);
+    updateGallery();
   } else {
     console.log("File is not an image.");
   }
+}
+
+function setupGallerySidebar() {
+  const galleryContainer = document.createElement("div");
+  galleryContainer.id = "galleryContainer";
+  galleryContainer.innerHTML = `<h3>Example Drawings</h3><div id="gallery"></div>`;
+  document.body.appendChild(galleryContainer);
+
+  loadExampleGallery();
+}
+
+function toggleGallery() {
+  const container = document.getElementById("galleryContainer");
+  container.classList.toggle("open");
+}
+
+function loadExampleGallery() {
+  const gallery = document.getElementById("gallery");
+  const exampleImages = [
+    "my-drawing (1).png",
+    "my-drawing (2).png",
+    "my-drawing.png",
+    "nice.png"
+  ];
+
+  exampleImages.forEach(src => {
+    const img = document.createElement("img");
+    img.src = src;
+    img.alt = "Example Drawing";
+    gallery.appendChild(img);
+  });
 }

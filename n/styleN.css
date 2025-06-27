@@ -81,3 +81,48 @@ a {
   text-decoration: none;
   color: #000000;
 }
+
+#galleryContainer {
+  position: fixed;
+  top: 0;
+  left: -220px;
+  width: 200px;
+  height: 100%;
+  background-color: #f0f0f0;
+  border-right: 2px solid #ccc;
+  padding: 10px;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+  overflow-y: auto;
+  transition: left 0.4s ease;
+  z-index: 999;
+  padding-top: 75px;
+}
+
+#galleryContainer.open {
+  left: 0;
+}
+
+#gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+#gallery img {
+  max-width: 100%;
+  border: 2px solid #aaa;
+  border-radius: 6px;
+}
+
+#galleryContainer h3 {
+  font-size: 16px;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+#toolbar button {
+  width: 60px;
+  padding: 4px;
+  font-size: 12px;
+}
